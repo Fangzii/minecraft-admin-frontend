@@ -1,0 +1,128 @@
+<!doctype html>
+<html ng-app="minecraft">
+
+<head>
+    <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular.min.js"></script>
+    <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-resource.min.js"></script>
+    <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-route.min.js"></script>
+    <script src="index.js"></script>
+    <title>MINECRAFT | Command</title>
+    <link rel="icon" type="image/x-cion" href="http://attachment.mcbbs.net/forum/201012/21/170145ojoxyxj0ybfjyijy.jpg">
+</head>
+
+<body>
+    <div style="margin:0 auto;width:0px;height:0px;overflow:hidden;">
+        <img id="logo" src="http://www.brain-cookies.de/Artikel/Minecraft_sticker/minecraft0002.jpg" width="100" height="100">
+    </div>
+    <h2>Minecraft</h2>
+
+
+    <div ng-controller="MinecraftController as ctrl">
+        <button ng-click="ctrl.loadCommands()">读取命令</button>
+        <button ng-click="ctrl.loadUsers()">读取用户</button>
+        <div ng-repeat="cmd in ctrl.commandscmd ">
+            <p><b>名称</b> {{cmd.command}}</p>
+            <p><b>说明</b> {{cmd.description}}</p>
+        </div>
+        <table border="1">
+            <tr>
+                <td>命令</td>
+                <td>说明</td>
+                <img id="logo" src="http://www.hntyjm.com/uploadfile/201008111553552072%281%29.jpg" width="500" height="80">
+            </tr>
+            <tr ng-repeat="line in ctrl.Commanddata.results">
+                <td>{{line.command}}</td>
+                <td>{{line.description}}</td>
+            </tr>
+        </table>
+
+        <table border="1">
+            <tr>
+                <td>用户名称</td>
+                <td>世界类型</td>
+            </tr>
+            <tr ng-repeat="user in ctrl.users.results">
+                <td><a href="" ng-click="ctrl.loadUserDetail(user.name)">{{user.name}}</a></td>
+                <td>{{Oine.world}}</td>
+            </tr>
+
+            <tr>
+                <td>目前用户人数:</td>
+                <td>{{ctrl.users.total}}</td>
+                
+            </tr>
+            <table>
+                <tr>
+                    <td>afk:</td>
+                    <td>{{ctrl.currentUserDetail.afk}}</td>
+                </tr>
+                <tr>
+                    <td>经验/等级:</td>
+                    <td>{{ctrl.currentUserDetail.exp}}</td>
+                </tr>
+                <tr>
+                    <td>飞行模式:</td>
+                    <td>{{ctrl.currentUserDetailf.ly_mode}}</td>
+                </tr>
+                <tr>
+                    <td>mod:</td>
+                    <td>{{ctrl.currentUserDetail.gamemode}}</td>
+                </tr>
+                <tr>
+                    <td>上帝模式:</td>
+                    <td>{{ctrl.currentUserDetail.god_mode}}</td>
+                </tr>
+                <tr>
+                    <td>HP:</td>
+                    <td>{{ctrl.currentUserDetail.health}}</td>
+                </tr>
+                <tr>
+                    <td>饥饿值:</td>
+                    <td>{{ctrl.currentUserDetail.hunger}}</td>
+                </tr>
+                <tr>
+                    <td>IP:</td>
+                    <td>{{ctrl.currentUserDetail.ip_address}}</td>
+                </tr>
+                <tr>
+                    <td>jail:</td>
+                    <td>{{ctrl.currentUserDetail.jall}}</td>
+                </tr>
+                <tr>
+                    <td>坐标:</td>
+                    <td>{{ctrl.currentUserDetail.location}}</td>
+                </tr>
+                <tr>
+                    <td>moeny</td>
+                    <td>{{ctrl.currentUserDetail.money}}</td>
+                </tr>
+                <tr>
+                    <td>muted</td>
+                    <td>{{ctrl.currentUserDetail.muted}}</td>
+                </tr>
+                <tr>
+                    <td>nick</td>
+                    <td>{{ctrl.currentUserDetail.nick}}</td>
+                </tr>
+                <tr>
+                    <td>op:</td>
+                    <td>{{ctrl.currentUserDetail.op}}</td>
+                </tr>
+                <tr>
+                    <td>游戏时间:</td>
+                    <td>{{ctrl.currentUserDetail.playtime}}</td>
+                </tr>
+
+
+            </table>
+
+
+    </div>
+    </table>
+    </div>
+    <div>
+        <img id="logo" src="http://www.hntyjm.com/uploadfile/201008111553552072%281%29.jpg" width="500" height="80"></div>
+    <div ng-controller="Minecr
+</body>
+
+</html>
