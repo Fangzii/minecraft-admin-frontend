@@ -6,123 +6,141 @@
     <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-resource.min.js"></script>
     <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-route.min.js"></script>
     <script src="index.js"></script>
+    <script src="photo.html"></script>
     <title>MINECRAFT | Command</title>
     <link rel="icon" type="image/x-cion" href="http://attachment.mcbbs.net/forum/201012/21/170145ojoxyxj0ybfjyijy.jpg">
+    <link rel="stylesheet" href="animations.css">
+    <meta charset="utf-8" />
 </head>
 
-<body>
-    <div style="margin:0 auto;width:0px;height:0px;overflow:hidden;">
-        <img id="logo" src="http://www.brain-cookies.de/Artikel/Minecraft_sticker/minecraft0002.jpg" width="100" height="100">
-    </div>
-    <h2>Minecraft</h2>
-
-
-    <div ng-controller="MinecraftController as ctrl">
-        <button ng-click="ctrl.loadCommands()">读取命令</button>
-        <button ng-click="ctrl.loadUsers()">读取用户</button>
-        <div ng-repeat="cmd in ctrl.commandscmd ">
-            <p><b>名称</b> {{cmd.command}}</p>
-            <p><b>说明</b> {{cmd.description}}</p>
+<div>
+    <div align="center">
+       <a name="T"></a>
+        <div style="margin:0 auto;width:1000px;height:20px;overflow:hidden;">
         </div>
-        <table border="1">
-            <tr>
-                <td>命令</td>
-                <td>说明</td>
-                <img id="logo" src="http://www.hntyjm.com/uploadfile/201008111553552072%281%29.jpg" width="500" height="80">
-            </tr>
-            <tr ng-repeat="line in ctrl.Commanddata.results">
-                <td>{{line.command}}</td>
-                <td>{{line.description}}</td>
-            </tr>
-        </table>
-
-        <table border="1">
-            <tr>
-                <td>用户名称</td>
-                <td>世界类型</td>
-            </tr>
-            <tr ng-repeat="user in ctrl.users.results">
-                <td><a href="" ng-click="ctrl.loadUserDetail(user.name)">{{user.name}}</a></td>
-                <td>{{Oine.world}}</td>
-            </tr>
-
-            <tr>
-                <td>目前用户人数:</td>
-                <td>{{ctrl.users.total}}</td>
-                
-            </tr>
-            <table>
-                <tr>
-                    <td>afk:</td>
-                    <td>{{ctrl.currentUserDetail.afk}}</td>
+        <h1><u>Minecraft</u></h1>
+        <div class="head-picture">
+            <div class="head-ctrl-box" align="center" >
+                <p class="head-ctrl">
+                    <a class="ctrl" href="1"></a>
+                    <a class="ctrl" href="2"></a>
+                    <a class="ctrl" href="3"></a>
+                    <a class="ctrl" href="4"></a>
+                </p>
+            </div>
+        </div>
+        <p> </p>
+            <div ng-controller="MinecraftController as ctrl" class="titel">
+           <div>
+            <a href="" ng-click="ctrl.loadCommands()" ng-mouseenter="openedcommend=openedcommend+1" ng-init="openedcommend=0" class="button">读取命令</a>
+            <a href="" ng-click="ctrl.loadUsers()" ng-mouseenter="openeduser=openeduser+1" ng-init="openeduser=0" class="button">读取用户</a>
+            <a href="#D">down</a>
+           </div>
+            <div ng-repeat="cmd in ctrl.commandscmd ">
+                <p><b>名称</b> {{cmd.command}}</p>
+                <p><b>说明</b> {{cmd.description}}</p>
+            </div>
+            <table border="1" ng-if="openedcommend">
+                <tr class="th">
+                    <td>命令</td>
+                    <td>说明</td>
                 </tr>
-                <tr>
-                    <td>经验/等级:</td>
-                    <td>{{ctrl.currentUserDetail.exp}}</td>
+                <tr ng-repeat="line in ctrl.Commanddata.results" class="td">
+                    <td>{{line.command}}</td>
+                    <td>{{line.description}}</td>
                 </tr>
-                <tr>
-                    <td>飞行模式:</td>
-                    <td>{{ctrl.currentUserDetailf.ly_mode}}</td>
-                </tr>
-                <tr>
-                    <td>mod:</td>
-                    <td>{{ctrl.currentUserDetail.gamemode}}</td>
-                </tr>
-                <tr>
-                    <td>上帝模式:</td>
-                    <td>{{ctrl.currentUserDetail.god_mode}}</td>
-                </tr>
-                <tr>
-                    <td>HP:</td>
-                    <td>{{ctrl.currentUserDetail.health}}</td>
-                </tr>
-                <tr>
-                    <td>饥饿值:</td>
-                    <td>{{ctrl.currentUserDetail.hunger}}</td>
-                </tr>
-                <tr>
-                    <td>IP:</td>
-                    <td>{{ctrl.currentUserDetail.ip_address}}</td>
-                </tr>
-                <tr>
-                    <td>jail:</td>
-                    <td>{{ctrl.currentUserDetail.jall}}</td>
-                </tr>
-                <tr>
-                    <td>坐标:</td>
-                    <td>{{ctrl.currentUserDetail.location}}</td>
-                </tr>
-                <tr>
-                    <td>moeny</td>
-                    <td>{{ctrl.currentUserDetail.money}}</td>
-                </tr>
-                <tr>
-                    <td>muted</td>
-                    <td>{{ctrl.currentUserDetail.muted}}</td>
-                </tr>
-                <tr>
-                    <td>nick</td>
-                    <td>{{ctrl.currentUserDetail.nick}}</td>
-                </tr>
-                <tr>
-                    <td>op:</td>
-                    <td>{{ctrl.currentUserDetail.op}}</td>
-                </tr>
-                <tr>
-                    <td>游戏时间:</td>
-                    <td>{{ctrl.currentUserDetail.playtime}}</td>
-                </tr>
-
-
             </table>
 
+            <div ng-if="openeduser" class="check-element">
+                <table border="1">
+                    <tr class="th">
+                        <td>用户名称</td>
+                        <td>世界类型</td>
+                    </tr>
+                    <tr ng-repeat="user in ctrl.users.results" class="td">
+                        <td><a href="" ng-click="ctrl.loadUserDetail(user.name)" ng-mouseenter="openedusername=openedusername+1" ng-init="openedusername=0">{{user.name}}</a></td>
+                        <td>{{users.world}}</td>
+                    </tr>
 
+                    <tr>
+                        <td>目前用户人数:</td>
+                        <td>{{ctrl.users.total}}</td>
+
+                    </tr>
+                    <table ng-if="openedusername">
+                        <tr>
+                            <td>afk:</td>
+                            <td>{{ctrl.currentUserDetail.afk}}</td>
+                        </tr>
+                        <tr>
+                            <td>经验/等级:</td>
+                            <td>{{ctrl.currentUserDetail.exp}}</td>
+                        </tr>
+                        <tr>
+                            <td>飞行模式:</td>
+                            <td>{{ctrl.currentUserDetailf.ly_mode}}</td>
+                        </tr>
+                        <tr>
+                            <td>mod:</td>
+                            <td>{{ctrl.currentUserDetail.gamemode}}</td>
+                        </tr>
+                        <tr>
+                            <td>上帝模式:</td>
+                            <td>{{ctrl.currentUserDetail.god_mode}}</td>
+                        </tr>
+                        <tr>
+                            <td>HP:</td>
+                            <td>{{ctrl.currentUserDetail.health}}</td>
+                        </tr>
+                        <tr>
+                            <td>饥饿值:</td>
+                            <td>{{ctrl.currentUserDetail.hunger}}</td>
+                        </tr>
+                        <tr>
+                            <td>IP:</td>
+                            <td>{{ctrl.currentUserDetail.ip_address}}</td>
+                        </tr>
+                        <tr>
+                            <td>jail:</td>
+                            <td>{{ctrl.currentUserDetail.jall}}</td>
+                        </tr>
+                        <tr>
+                            <td>坐标:</td>
+                            <td>{{ctrl.currentUserDetail.location}}</td>
+                        </tr>
+                        <tr>
+                            <td>moeny</td>
+                            <td>{{ctrl.currentUserDetail.money}}</td>
+                        </tr>
+                        <tr>
+                            <td>muted</td>
+                            <td>{{ctrl.currentUserDetail.muted}}</td>
+                        </tr>
+                        <tr>
+                            <td>nick</td>
+                            <td>{{ctrl.currentUserDetail.nick}}</td>
+                        </tr>
+                        <tr>
+                            <td>op:</td>
+                            <td>{{ctrl.currentUserDetail.op}}</td>
+                        </tr>
+                        <tr>
+                            <td>游戏时间:</td>
+                            <td>{{ctrl.currentUserDetail.playtime}}</td>
+                        </tr>
+
+
+                    </table>
+
+                </table>
+            </div>
+        </div>
+        <a href="#T">top</a>
     </div>
-    </table>
-    </div>
-    <div>
-        <img id="logo" src="http://www.hntyjm.com/uploadfile/201008111553552072%281%29.jpg" width="500" height="80"></div>
-    <div ng-controller="Minecr
+    <div align="center">
+        <img id="logo" src="http://www.hntyjm.com/uploadfile/201008111553552072%281%29.jpg" width="500" height="80  "></div>
+    <a name="D"></a>
+</div>
 </body>
 
 </html>

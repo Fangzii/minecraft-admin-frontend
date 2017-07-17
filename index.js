@@ -16,7 +16,7 @@ angular.module('minecraft', [])
 
             $http({
                 method: 'GET',
-                url: 'http://192.168.1.100:25585/commands'
+                url: 'http://nas.fangs.work:25585/commands'
             }).then(function successCallback(response) { /**/
                 // this callback will be called asynchronously
                 // when the response is available
@@ -33,7 +33,7 @@ angular.module('minecraft', [])
 
             $http({
                 method: 'GET',
-                url: 'http://192.168.1.100:25585/users'
+                url: 'http://nas.fangs.work:25585/users'
             }).then(function successCallback(response) {
                 // this callback will be called asynchronously
                 // when the response is available
@@ -48,7 +48,7 @@ angular.module('minecraft', [])
             username = username.replace('[AFK]', '')
             $http({
                 method: 'GET',
-                url: 'http://192.168.1.100:25585/users/' + username
+                url: 'http://nas.fangs.work:25585/users/' + username
             }).then(function successCallback(response) {
                 // this callback will be called asynchronously
                 // when the response is available
@@ -64,3 +64,4 @@ angular.module('minecraft', [])
 
 
     })
+

@@ -1,0 +1,100 @@
+h1{
+    color: green;
+}
+
+.titel{
+    font-size: 15px;
+    font-family: ".SF NS Text";
+}
+
+a{
+    color: burlywood;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    text-decoration: underline;
+}
+
+.button:link, .button:visited {
+    background-color: forestgreen;
+    color: white;
+    padding: 20px  214px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+.button:hover, .button:active {
+     background-color: green;
+ }
+
+table {
+    border-collapse: collapse;
+    width: 54%;
+}
+
+td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+.th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.head-ctrl-box{
+
+
+}
+
+.head-ctrl{
+
+}
+
+.ctrl{
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    margin: 5px;
+    border: 2px solid black;
+
+}
+
+.ctrl:link, .ctrl:visited {
+    background-color: white;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+
+.ctrl:hover, .ctrl:active {
+    background-color: green;
+}
+
+.head-ctrl-box{
+    float: right;
+    padding-top: 375px;
+    padding-right: 460px;
+}
+.head-picture{
+background-image: url("https://media.mojang.com/blog-image/2c34ca1217c7d95e76a6f8d646adf9208f78145a/blogmcnet.png");
+    width: 1024px;
+    height: 436px;
+}
