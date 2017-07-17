@@ -64,4 +64,3 @@ angular.module('minecraft', [])
 
 
     })
-
