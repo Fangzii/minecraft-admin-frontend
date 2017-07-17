@@ -2,6 +2,7 @@
 <html ng-app="minecraft">
 
 <head>
+    <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-animate.js"></script>
     <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular.min.js"></script>
     <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-resource.min.js"></script>
     <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-route.min.js"></script>
@@ -32,15 +33,17 @@
         <p> </p>
             <div ng-controller="MinecraftController as ctrl" class="titel">
            <div>
-            <a href="" ng-click="ctrl.loadCommands()" ng-mouseenter="openedcommend=openedcommend+1" ng-init="openedcommend=0" class="button">读取命令</a>
-            <a href="" ng-click="ctrl.loadUsers()" ng-mouseenter="openeduser=openeduser+1" ng-init="openeduser=0" class="button">读取用户</a>
-            <a href="#D">down</a>
+            <button href="" ng-click="ctrl.loadCommands()" ng-mouseenter="openedcommend=openedcommend+1" ng-init="openedcommend=0" class="button button1">读取命令</button>
+            <button href="" ng-click="ctrl.loadUsers()" ng-mouseenter="openeduser=openeduser+1" ng-init="openeduser=0" class="button button1">读取用户</button>
+            <a href="#D">Down</a>
            </div>
             <div ng-repeat="cmd in ctrl.commandscmd ">
                 <p><b>名称</b> {{cmd.command}}</p>
                 <p><b>说明</b> {{cmd.description}}</p>
             </div>
-            <table border="1" ng-if="openedcommend">
+                <p></p>
+                <div>
+            <table border="1" ng-if="openedcommend" class="show-user">
                 <tr class="th">
                     <td>命令</td>
                     <td>说明</td>
@@ -50,9 +53,10 @@
                     <td>{{line.description}}</td>
                 </tr>
             </table>
-
-            <div ng-if="openeduser" class="check-element">
-                <table border="1">
+                </div>
+                <p></p>
+            <div ng-if="openeduser" class="show-user">
+                <table border="1" >
                     <tr class="th">
                         <td>用户名称</td>
                         <td>世界类型</td>
@@ -135,7 +139,7 @@
                 </table>
             </div>
         </div>
-        <a href="#T">top</a>
+        <a href="#T">Top</a>
     </div>
     <div align="center">
         <img id="logo" src="http://www.hntyjm.com/uploadfile/201008111553552072%281%29.jpg" width="500" height="80  "></div>

@@ -1,37 +1,22 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Minecraft | Picture</title>
-    <link rel="stylesheet" href="photo.css">
+    <title>Example - example-ng-if-production</title>
+    <link href="photo.css" rel="stylesheet" type="text/css">
+
+
+    <script src="//code.angularjs.org/snapshot/angular.min.js"></script>
+    <script src="//code.angularjs.org/snapshot/angular-animate.js"></script>
+
+
+
 </head>
-<body>
-
-
-<div class="header">
-    <h1>Chania</h1>
-</div>
-
-<div class="clearfix">
-    <div class="column menu">
-        <ul>
-            <li>The Flight</li>
-            <li>The City</li>
-            <li>The Island</li>
-            <li>The Food</li>
-        </ul>
-    </div>
-
-    <div class="column content">
-        <h1>The City</h1>
-        <p>Chania is the capital of the Chania region on the island of Crete. The city can be divided in two parts, the old town and the modern city.</p>
-        <p>You will learn more about web layout and responsive web pages in a later chapter.</p>
-    </div>
-</div>
-
-<div class="footer">
-    <p>Footer Text</p>
-</div>
-
+<body ng-app="ngAnimate">
+<label>Click me: <input type="checkbox" ng-model="checked" ng-init="checked=true" /></label><br/>
+Show when checked:
+<span ng-if="checked" class="animate-if">
+  This is removed when the checkbox is unchecked.
+</span>
 </body>
 </html>

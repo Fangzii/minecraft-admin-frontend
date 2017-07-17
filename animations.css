@@ -9,6 +9,8 @@ h1{
 
 a{
     color: burlywood;
+    -webkit-transition-duration: 0.4s;
+    transition: 0.4s;
 }
 
 a:link {
@@ -17,28 +19,41 @@ a:link {
 
 a:visited {
     text-decoration: none;
+    color: green;
 }
 
 a:hover {
     text-decoration: underline;
+    color: hotpink;
 }
 
 a:active {
     text-decoration: underline;
 }
 
-.button:link, .button:visited {
-    background-color: forestgreen;
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
     color: white;
-    padding: 20px  214px;
+    padding: 20px  210px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+.button1 {
+    background-color: forestgreen;
+    color: burlywood;
+    border: 2px solid #4CAF50;
 }
 
-
-.button:hover, .button:active {
-     background-color: green;
+.button:hover{
+    background-color: #4CAF50;
+    color: white;
  }
 
 table {
@@ -97,4 +112,20 @@ tr:nth-child(even){background-color: #f2f2f2}
 background-image: url("https://media.mojang.com/blog-image/2c34ca1217c7d95e76a6f8d646adf9208f78145a/blogmcnet.png");
     width: 1024px;
     height: 436px;
+}
+
+
+
+.show-user.ng-enter,.show-user.ng-leave{
+    transition:all cubic-bezier(1,1,1,1)5s;
+}
+
+.show-user.ng-enter,
+.show-user.ng-leave.ng-leave-active {
+    opacity:0;
+}
+
+.show-user.ng-leave,
+.show-user.ng-enter.ng-enter-active {
+    opacity:1;
 }
