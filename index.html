@@ -33,7 +33,7 @@
         <p> </p>
             <div ng-controller="MinecraftController as ctrl" class="titel">
            <div>
-            <button href="" ng-click="ctrl.loadCommands()" ng-mouseenter="openedcommend=openedcommend+1" ng-init="openedcommend=0" class="button button1">读取命令</button>
+            <button href="" ng-click="ctrl.loadCommands()" ng-mouseenter="openedcommend=openedcommend+1" ng-init="openedcommend=0" class="button button1" >读取命令</button>
             <button href="" ng-click="ctrl.loadUsers()" ng-mouseenter="openeduser=openeduser+1" ng-init="openeduser=0" class="button button1">读取用户</button>
             <a href="#D">Down</a>
            </div>
@@ -53,7 +53,14 @@
                     <td>{{line.description}}</td>
                 </tr>
             </table>
-                </div>
+                    <div ng-if="openedcommend">
+                        <button ng-click="ctrl.loadCommands()" class="button-1 button1-1">首页</button>
+                        <button ng-click="ctrl.loadCommands2()" class="button-1 button1-1">2</button>
+                        <button ng-click="ctrl.loadCommands3()" class="button-1 button1-1">3</button>
+                        <button ng-click="ctrl.loadCommands4()" class="button-1 button1-1">4</button>
+                        <input type="text" ng-model="gotoPage">
+                        <button href="" ng-click="" class="button-1 button1-1"></button>
+                    </div>
                 <p></p>
             <div ng-if="openeduser" class="show-user">
                 <table border="1" >

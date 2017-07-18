@@ -12,11 +12,11 @@ angular.module('minecraft', [])
             }
         ]
 
-        this.loadCommands = function () {
 
+        this.loadCommands = function ( ) {
             $http({
                 method: 'GET',
-                url: 'http://nas.fangs.work:25585/commands'
+                url: 'http://nas.fangs.work:25585/commands?start=0&count=20'
             }).then(function successCallback(response) { /**/
                 // this callback will be called asynchronously
                 // when the response is available
@@ -29,6 +29,55 @@ angular.module('minecraft', [])
             })
         };
 
+        this.loadCommands2 = function ( ) {
+            $http({
+                method: 'GET',
+                url: 'http://nas.fangs.work:25585/commands?start=20&count=20'
+            }).then(function successCallback(response) { /**/
+                // this callback will be called asynchronously
+                // when the response is available
+                self.Commanddata = response.data
+                console.log(self.Commanddata)
+
+            }, function errorCallback(response) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+            })
+        };
+
+        this.loadCommands3 = function ( ) {
+            $http({
+                method: 'GET',
+                url: 'http://nas.fangs.work:25585/commands?start=40&count=20'
+            }).then(function successCallback(response) { /**/
+                // this callback will be called asynchronously
+                // when the response is available
+                self.Commanddata = response.data
+                console.log(self.Commanddata)
+
+            }, function errorCallback(response) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+            })
+        };
+
+        this.loadCommands4 = function ( ) {
+            $http({
+                method: 'GET',
+                url: 'http://nas.fangs.work:25585/commands?start=60&count=20'
+            }).then(function successCallback(response) { /**/
+                // this callback will be called asynchronously
+                // when the response is available
+                self.Commanddata = response.data
+                console.log(self.Commanddata)
+
+            }, function errorCallback(response) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+            })
+        };
+
+
         this.loadUsers = function () {
 
             $http({
@@ -38,6 +87,7 @@ angular.module('minecraft', [])
                 // this callback will be called asynchronously
                 // when the response is available
                 self.users = response.data
+                console.log(self.users)
             }, function errorCallback(response) {
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
@@ -64,3 +114,4 @@ angular.module('minecraft', [])
 
 
     })
+
