@@ -8,10 +8,12 @@
     <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-route.min.js"></script>
     <script src="index.js"></script>
     <script src="photo.html"></script>
+    <script src="script.js"></script>
     <title>MINECRAFT | Command</title>
     <link rel="icon" type="image/x-cion" href="http://attachment.mcbbs.net/forum/201012/21/170145ojoxyxj0ybfjyijy.jpg">
     <link rel="stylesheet" href="animations.css">
     <meta charset="utf-8" />
+
 </head>
 
 
@@ -65,7 +67,6 @@
                             <button ng-click="ctrl.loadCommands8()" class="button-1 button1-1">8</button>
                             <button ng-click="ctrl.loadCommands9()" class="button-1 button1-1">9</button>
                             <button ng-click="ctrl.loadCommands10()" class="button-1 button1-1">10</button>
-                        <button href="" ng-click="" class="button-1 button1-1"></button>
                         </div>
                         <div ng-switch-when="15">
                             <button ng-click="ctrl.loadCommands15()" class="button-1 button1-1">1</button>
@@ -136,16 +137,17 @@
                         </select>
                             行</span>
                     </div>
+                    <p id="demo"> 当前第</p>
                 <p></p>
-            <div ng-if="openeduser" class="show-user">
-                <table border="1" >
+            <div class="show-user">
+                <table border="1"  ng-if="openeduser" >
                     <tr class="th">
                         <td>用户名称</td>
                         <td>世界类型</td>
                     </tr>
                     <tr ng-repeat="user in ctrl.users.results" class="td">
-                        <td><a href="" ng-click="ctrl.loadUserDetail(user.name)" ng-mouseenter="openedusername=openedusername+1" ng-init="openedusername=0">{{user.name}}</a></td>
-                        <td>{{users.world}}</td>
+                        <td ><a href="" ng-click="ctrl.loadUserDetail(user.name)" ng-mouseenter="openedusername=openedusername+1" ng-init="openedusername=0">{{user.name}}</a></td>
+                        <td>{{user.world}}</td>
                     </tr>
 
                     <tr>
@@ -157,6 +159,7 @@
                         <tr>
                             <td>afk:</td>
                             <td>{{ctrl.currentUserDetail.afk}}</td>
+                            <td><button>更改功能</button></td>
                         </tr>
                         <tr>
                             <td>经验/等级:</td>
@@ -217,15 +220,21 @@
 
 
                     </table>
-
                 </table>
             </div>
         </div>
-        <a href="#T">Top</a>
     </div>
     <div align="center">
         <img id="logo" src="http://www.hntyjm.com/uploadfile/201008111553552072%281%29.jpg" width="500" height="80  "></div>
     <a name="D"></a>
+        <p><a href="#T">Top</a></p>
+    </div>
+<div align="right">
+    <script>
+        document.write("<span id=lblTime width='80px' height='10px' Font-Size='6pt' font-family= '.SF NS Text' style='color:burlywood'  ></span>") //输出显示日期的容器
+        //每1000毫秒(即1秒) 执行一次本段代码
+        setInterval("lblTime.innerText=new Date().toLocaleString()", 1000)
+    </script>
 </div>
 </body>
 

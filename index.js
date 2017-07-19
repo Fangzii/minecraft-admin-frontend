@@ -16,7 +16,7 @@ angular.module('minecraft', [])
         this.loadCommands = function () {
             $http({
                 method: 'GET',
-                url: 'http://nas.fangs.work:25585/commands?start=0&count=20'
+                url: 'http://nas.fangs.work:25585/commands'
             }).then(function successCallback(response) { /**/
                 // this callback will be called asynchronously
                 // when the response is available
@@ -28,7 +28,6 @@ angular.module('minecraft', [])
                 // or server returns response with an error status.
             })
         };
-
         this.loadCommands2 = function ( ) {
             $http({
                 method: 'GET',
@@ -44,7 +43,6 @@ angular.module('minecraft', [])
                 // or server returns response with an error status.
             })
         };
-
         this.loadCommands3 = function ( ) {
             $http({
                 method: 'GET',
@@ -60,7 +58,6 @@ angular.module('minecraft', [])
                 // or server returns response with an error status.
             })
         };
-
         this.loadCommands4 = function ( ) {
             $http({
                 method: 'GET',
@@ -76,7 +73,6 @@ angular.module('minecraft', [])
                 // or server returns response with an error status.
             })
         };
-
         this.loadCommands5 = function ( ) {
             $http({
                 method: 'GET',
@@ -92,7 +88,6 @@ angular.module('minecraft', [])
                 // or server returns response with an error status.
             })
         };
-
         this.loadCommands6 = function ( ) {
             $http({
                 method: 'GET',
@@ -138,7 +133,6 @@ angular.module('minecraft', [])
                 // or server returns response with an error status.
             })
         };
-
         this.loadCommands9 = function ( ) {
             $http({
                 method: 'GET',
@@ -154,7 +148,6 @@ angular.module('minecraft', [])
                 // or server returns response with an error status.
             })
         };
-
         this.loadCommands10 = function ( ) {
             $http({
                 method: 'GET',
@@ -170,7 +163,6 @@ angular.module('minecraft', [])
                 // or server returns response with an error status.
             })
         };
-
         this.loadCommands15 = function () {
             $http({
                 method: 'GET',
@@ -186,7 +178,6 @@ angular.module('minecraft', [])
                 // or server returns response with an error status.
             })
         };
-
         this.loadCommands215 = function ( ) {
             $http({
                 method: 'GET',
@@ -202,7 +193,6 @@ angular.module('minecraft', [])
                 // or server returns response with an error status.
             })
         };
-
         this.loadCommands315 = function ( ) {
             $http({
                 method: 'GET',
@@ -218,7 +208,6 @@ angular.module('minecraft', [])
                 // or server returns response with an error status.
             })
         };
-
         this.loadCommands415 = function ( ) {
             $http({
                 method: 'GET',
@@ -234,7 +223,6 @@ angular.module('minecraft', [])
                 // or server returns response with an error status.
             })
         };
-
         this.loadCommands515 = function ( ) {
             $http({
                 method: 'GET',
@@ -250,7 +238,6 @@ angular.module('minecraft', [])
                 // or server returns response with an error status.
             })
         };
-
         this.loadCommands615 = function ( ) {
             $http({
                 method: 'GET',
@@ -296,7 +283,6 @@ angular.module('minecraft', [])
                 // or server returns response with an error status.
             })
         };
-
         this.loadCommands915 = function ( ) {
             $http({
                 method: 'GET',
@@ -312,7 +298,6 @@ angular.module('minecraft', [])
                 // or server returns response with an error status.
             })
         };
-
         this.loadCommands1015 = function ( ) {
             $http({
                 method: 'GET',
@@ -328,7 +313,6 @@ angular.module('minecraft', [])
                 // or server returns response with an error status.
             })
         };
-
         this.loadCommands1115 = function ( ) {
             $http({
                 method: 'GET',
@@ -344,7 +328,6 @@ angular.module('minecraft', [])
                 // or server returns response with an error status.
             })
         };
-
         this.loadCommands1215 = function ( ) {
             $http({
                 method: 'GET',
@@ -360,7 +343,6 @@ angular.module('minecraft', [])
                 // or server returns response with an error status.
             })
         };
-
         this.loadCommands1315 = function ( ) {
             $http({
                 method: 'GET',
@@ -661,6 +643,7 @@ angular.module('minecraft', [])
                 // or server returns response with an error status.
             })
         };
+
         this.loadUsers = function () {
 
             $http({
@@ -687,6 +670,7 @@ angular.module('minecraft', [])
                 // when the response is available
                 self.currentUserDetail = response.data
                 console.log(self.username)
+                this.self.currentUserDetail
             
 
             }, function errorCallback(response) {
@@ -697,4 +681,5 @@ angular.module('minecraft', [])
 
 
     })
+
 
