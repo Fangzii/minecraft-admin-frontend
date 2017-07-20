@@ -2,9 +2,6 @@ angular.module('minecraft', [])
     .controller('MinecraftController', function ($scope,$http) {
         var self = this;
         var page;
-       this.wpage = function (count,page) {
-                return page*count
-       }
 
         this.commands = [{
                 command: '/list',
@@ -21,11 +18,9 @@ angular.module('minecraft', [])
                 document.write(page)
         }
 
-        this.wpage = function(){
-
-
-
-        }
+            this.start = function (page,count) {
+                alert("page*count");
+       }
 
 
         this.loadCommands = function (start,count) {
@@ -45,6 +40,22 @@ angular.module('minecraft', [])
             })
         };
 
+        this.loadCommands = function (start,count) {
+
+            $http({
+                method: 'GET',
+                url: 'http://nas.fangs.work:25585/commands?start='+start+'&count='+count
+            }).then(function successCallback(response) { /**/
+                // this callback will be called asynchronously
+                // when the response is available
+                self.Commanddata = response.data
+                console.log(self.Commanddata)
+
+            }, function errorCallback(response) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+            })
+        };
         this.loadUsers = function () {
 
             $http({

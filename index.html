@@ -65,7 +65,7 @@
                             <option >15</option>
                             <option >20</option>
                             </select>
-                            行／总共{{ctrl.Commanddata.total}}</span>
+                            行／总共{{ctrl.Commanddata.total}}条</span>
                         跳到<select  ng-model="page" >
                            <option>1</option>
                            <option>2</option>
@@ -87,8 +87,10 @@
                         <option>18</option>
                         <option>19</option>
                         <option>20</option>
-                       </select><input type="text" ng-model="page">页
-                        <button ng-click="ctrl.loadCommands(page*count,count)">go</button>
+                       </select><input type="text" ng-model="page" placeholder="请输入跳转页">页
+                        <button ng-click="ctrl.loadCommands(page*count,count)" class="button-1 button1-1">go</button>
+                        <button ng-click="ctrl.loadCommands(0,count)" class="button-1 button1-1">首页</button>
+                        <button ng-click="ctrl.loadCommands(page+1,count)" class="button-1 button1-1">下一页</button>
                     </div>
                 <p></p>
             <div class="show-user">
