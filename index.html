@@ -17,7 +17,7 @@
 </head>
 
 
-    <div align="center">
+<div align="center">
        <a name="T"></a>
         <div style="margin:0 auto;width:1000px;height:20px;overflow:hidden;">
         </div>
@@ -35,7 +35,7 @@
         <p> </p>
         <div ng-controller="MinecraftController as ctrl" class="titel">
            <div>
-            <button href="" ng-click="ctrl.loadCommands()" ng-mouseenter="openedcommend=openedcommend+1" ng-init="openedcommend=0" class="button button1" >读取命令</button>
+            <button href="" ng-click="ctrl.loadCommands(0,20)" ng-mouseenter="openedcommend=openedcommend+1" ng-init="openedcommend=0" class="button button1" >读取命令</button>
             <button href="" ng-click="ctrl.loadUsers()" ng-mouseenter="openeduser=openeduser+1" ng-init="openeduser=0" class="button button1">读取用户</button>
             <a href="#D">Down</a>
            </div>
@@ -55,89 +55,41 @@
                     <td>{{line.description}}</td>
                 </tr>
             </table>
-                    <div ng-if="openedcommend" ng-switch on="chosecount">
-                        <div ng-switch-when="20">
-                            <button ng-click="ctrl.loadCommands()" class="button-1 button1-1">1</button>
-                            <button ng-click="ctrl.loadCommands2()" class="button-1 button1-1">2</button>
-                            <button ng-click="ctrl.loadCommands3()" class="button-1 button1-1">3</button>
-                            <button ng-click="ctrl.loadCommands4()" class="button-1 button1-1">4</button>
-                            <button ng-click="ctrl.loadCommands5()" class="button-1 button1-1">5</button>
-                            <button ng-click="ctrl.loadCommands6()" class="button-1 button1-1">6</button>
-                            <button ng-click="ctrl.loadCommands7()" class="button-1 button1-1">7</button>
-                            <button ng-click="ctrl.loadCommands8()" class="button-1 button1-1">8</button>
-                            <button ng-click="ctrl.loadCommands9()" class="button-1 button1-1">9</button>
-                            <button ng-click="ctrl.loadCommands10()" class="button-1 button1-1">10</button>
-                        </div>
-                        <div ng-switch-when="15">
-                            <button ng-click="ctrl.loadCommands15()" class="button-1 button1-1">1</button>
-                            <button ng-click="ctrl.loadCommands215()" class="button-1 button1-1">2</button>
-                            <button ng-click="ctrl.loadCommands315()" class="button-1 button1-1">3</button>
-                            <button ng-click="ctrl.loadCommands415()" class="button-1 button1-1">4</button>
-                            <button ng-click="ctrl.loadCommands515()" class="button-1 button1-1">5</button>
-                            <button ng-click="ctrl.loadCommands615()" class="button-1 button1-1">6</button>
-                            <button ng-click="ctrl.loadCommands715()" class="button-1 button1-1">7</button>
-                            <button ng-click="ctrl.loadCommands815()" class="button-1 button1-1">8</button>
-                            <button ng-click="ctrl.loadCommands915()" class="button-1 button1-1">9</button>
-                            <button ng-click="ctrl.loadCommands1015()" class="button-1 button1-1">10</button>
-                            <button ng-click="ctrl.loadCommands1115()" class="button-1 button1-1">11</button>
-                            <button ng-click="ctrl.loadCommands1215()" class="button-1 button1-1">12</button>
-                            <button ng-click="ctrl.loadCommands1315()" class="button-1 button1-1">13</button>
-                        </div>
-                        <div ng-switch-when="10">
-                            <button ng-click="ctrl.loadCommands110()" class="button-1 button1-1">1</button>
-                            <button ng-click="ctrl.loadCommands210()" class="button-1 button1-1">2</button>
-                            <button ng-click="ctrl.loadCommands310()" class="button-1 button1-1">3</button>
-                            <button ng-click="ctrl.loadCommands410()" class="button-1 button1-1">4</button>
-                            <button ng-click="ctrl.loadCommands510()" class="button-1 button1-1">5</button>
-                            <button ng-click="ctrl.loadCommands610()" class="button-1 button1-1">6</button>
-                            <button ng-click="ctrl.loadCommands710()" class="button-1 button1-1">7</button>
-                            <button ng-click="ctrl.loadCommands810()" class="button-1 button1-1">8</button>
-                            <button ng-click="ctrl.loadCommands910()" class="button-1 button1-1">9</button>
-                            <button ng-click="ctrl.loadCommands1010()" class="button-1 button1-1">10</button>
-                            <button ng-click="ctrl.loadCommands1110()" class="button-1 button1-1">11</button>
-                            <button ng-click="ctrl.loadCommands1210()" class="button-1 button1-1">12</button>
-                            <button ng-click="ctrl.loadCommands1310()" class="button-1 button1-1">13</button>
-                            <button ng-click="ctrl.loadCommands1410()" class="button-1 button1-1">14</button>
-                            <button ng-click="ctrl.loadCommands1510()" class="button-1 button1-1">15</button>
-                            <button ng-click="ctrl.loadCommands1610()" class="button-1 button1-1">16</button>
-                            <button ng-click="ctrl.loadCommands1710()" class="button-1 button1-1">17</button>
-                            <button ng-click="ctrl.loadCommands1810()" class="button-1 button1-1">18</button>
-                            <button ng-click="ctrl.loadCommands1910()" class="button-1 button1-1">19</button>
-                        </div>
-                        <div ng-switch-when="5">
-                            <button ng-click="ctrl.loadCommands()" class="button-1 button1-1">1</button>
-                            <button ng-click="ctrl.loadCommands2()" class="button-1 button1-1">2</button>
-                            <button ng-click="ctrl.loadCommands3()" class="button-1 button1-1">3</button>
-                            <button ng-click="ctrl.loadCommands4()" class="button-1 button1-1">4</button>
-                            <button ng-click="ctrl.loadCommands5()" class="button-1 button1-1">5</button>
-                            <button ng-click="ctrl.loadCommands6()" class="button-1 button1-1">6</button>
-                            <button ng-click="ctrl.loadCommands7()" class="button-1 button1-1">7</button>
-                            <button ng-click="ctrl.loadCommands8()" class="button-1 button1-1">8</button>
-                            <button ng-click="ctrl.loadCommands9()" class="button-1 button1-1">9</button>
-                            <button ng-click="ctrl.loadCommands10()" class="button-1 button1-1">10</button>
-                        </div>
-                        <div ng-switch-when=" ">
-                            <button ng-click="ctrl.loadCommands()" class="button-1 button1-1">1</button>
-                            <button ng-click="ctrl.loadCommands2()" class="button-1 button1-1">2</button>
-                            <button ng-click="ctrl.loadCommands3()" class="button-1 button1-1">3</button>
-                            <button ng-click="ctrl.loadCommands4()" class="button-1 button1-1">4</button>
-                            <button ng-click="ctrl.loadCommands5()" class="button-1 button1-1">5</button>
-                            <button ng-click="ctrl.loadCommands6()" class="button-1 button1-1">6</button>
-                            <button ng-click="ctrl.loadCommands7()" class="button-1 button1-1">7</button>
-                            <button ng-click="ctrl.loadCommands8()" class="button-1 button1-1">8</button>
-                            <button ng-click="ctrl.loadCommands9()" class="button-1 button1-1">9</button>
-                            <button ng-click="ctrl.loadCommands10()" class="button-1 button1-1">10</button>
-                        </div>
-
-                        <span>每页
-                        <select ng-model="chosecount">
+                    <div ng-if="openedcommend" ng-switch on="count">
+                        <table ng-repeat="">
+                        </table>
+                            <span>每页
+                            <select ng-model="count" >
+                            <option >5</option>
                             <option >10</option>
                             <option >15</option>
                             <option >20</option>
-                        </select>
-                            行</span>
+                            </select>
+                            行／总共{{ctrl.Commanddata.total}}</span>
+                        跳到<select  ng-model="page" >
+                           <option>1</option>
+                           <option>2</option>
+                           <option>3</option>
+                           <option>4</option>
+                           <option>5</option>
+                           <option>6</option>
+                           <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        <option>13</option>
+                        <option>14</option>
+                        <option>15</option>
+                        <option>16</option>
+                        <option>17</option>
+                        <option>18</option>
+                        <option>19</option>
+                        <option>20</option>
+                       </select>页
+                        <button ng-click="ctrl.loadCommands(page*count,count)">go</button>
                     </div>
-                    <p id="demo"> 当前第</p>
                 <p></p>
             <div class="show-user">
                 <table border="1"  ng-if="openeduser" >
