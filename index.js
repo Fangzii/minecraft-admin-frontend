@@ -40,22 +40,7 @@ angular.module('minecraft', [])
             })
         };
 
-        this.loadCommands = function (start,count) {
-
-            $http({
-                method: 'GET',
-                url: 'http://nas.fangs.work:25585/commands?start='+start+'&count='+count
-            }).then(function successCallback(response) { /**/
-                // this callback will be called asynchronously
-                // when the response is available
-                self.Commanddata = response.data
-                console.log(self.Commanddata)
-
-            }, function errorCallback(response) {
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
-            })
-        };
+        
         this.loadUsers = function () {
 
             $http({
