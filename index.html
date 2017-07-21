@@ -37,7 +37,41 @@
            <div>
             <button href="" ng-click="ctrl.loadCommands(0,20)" ng-mouseenter="openedcommend=openedcommend+1" ng-init="openedcommend=0" class="button button1" >读取命令</button>
             <button href="" ng-click="ctrl.loadUsers()" ng-mouseenter="openeduser=openeduser+1" ng-init="openeduser=0" class="button button1">读取用户</button>
-            <a href="#D">Down</a>
+               <button ng-click="openedcommendChange=openedcommendChange+1" ng-init="openedcommendChange=0" class="button-2 button2-2" >作弊</button>
+               <button ng-click="openedcommendChange2=openedcommendChange2+1" ng-init="openedcommendChange2=0" class="button-3 button3-3" >恶搞</button>
+               <div ng-if="openedcommendChange" class="playground">
+                   <table border="1">
+                       <tr class="th">
+                           <td>输入用户名称</td>
+                           <td><input type="text"  ng-model="name" placeholder="请输入用户名"></td>
+                       </tr>
+                       <tr class="td">
+                           <td><button ng-click="ctrl.Feed(name)" class="button1-1 button-1">填满饥饿度</button></td>
+                           <td><button ng-click="ctrl.HP(name)" class="button1-1 button-1">填满生命值</button></td>
+                       </tr>
+                       <tr class="td">
+                           <td><button ng-click="ctrl.Fly(name)" class="button1-1 button-1">飞行模式</button></td>
+                           <td><button ng-click="ctrl.God(name)" class="button1-1 button-1">上帝模式</button></td>
+                       </tr>
+                   </table>
+               </div>
+               <p></p>
+               <div ng-if="openedcommendChange2" >
+                   <table border="1">
+                       <tr class="th">
+                           <td>输入用户名称</td>
+                           <td><input type="text"  ng-model="name" placeholder="请输入用户名"></td>
+                       </tr>
+                       <tr class="td">
+                           <td>输入时间</td>
+                           <td><input type="number" ng-model="burntime"  />s</td>
+                       </tr>
+                       <tr class="td">
+                           <td><a href="" ng-click="ctrl.Burn(name)" >点燃该用户</a></td>
+                           <td></td>
+                       </tr>
+                   </table>
+               </div>
            </div>
             <div ng-repeat="cmd in ctrl.commandscmd ">
                 <p><b>名称</b> {{cmd.command}}</p>
@@ -50,7 +84,7 @@
                     <td>命令</td>
                     <td>说明</td>
                 </tr>
-                <tr ng-repeat="line in ctrl.Commanddata.results" class="td">
+                <tr ng-repeat="line in ctrl.Commanddata.results|filter:searchText" class="td">
                     <td>{{line.command}}</td>
                     <td>{{line.description}}</td>
                 </tr>
@@ -87,89 +121,119 @@
                         <option>18</option>
                         <option>19</option>
                         <option>20</option>
-                       </select><input type="text" ng-model="page" placeholder="请输入跳转页">页
+                       </select><input type="number" ng-model="page"  placeholder="请输入跳转页" />页
                         <button ng-click="ctrl.loadCommands(page*count,count)" class="button-1 button1-1">go</button>
                         <button ng-click="ctrl.loadCommands(0,count)" class="button-1 button1-1">首页</button>
                         <button ng-click="ctrl.loadCommands(page+1,count)" class="button-1 button1-1">下一页</button>
+                        <input type="number" ng-model="maxlength" id="maxlength" />
                     </div>
                 <p></p>
-            <div class="show-user">
-                <table border="1"  ng-if="openeduser" >
+            <div class="show-user" ng-if="openeduser">
+                <table border="1"   >
                     <tr class="th">
                         <td>用户名称</td>
                         <td>世界类型</td>
                     </tr>
                     <tr ng-repeat="user in ctrl.users.results" class="td">
-                        <td ><a href="" ng-click="ctrl.loadUserDetail(user.name)" ng-mouseenter="openedusername=openedusername+1" ng-init="openedusername=0">{{user.name}}</a></td>
+                        <td ><a href="" ng-click="ctrl.loadUserDetail(user.name)" ng-mouseenter="openedusername=openedusername+1" ng-init="openedusername=0" >{{user.name}}</a></td>
                         <td>{{user.world}}</td>
                     </tr>
 
                     <tr>
                         <td>目前用户人数:</td>
                         <td>{{ctrl.users.total}}</td>
-
                     </tr>
-                    <table ng-if="openedusername">
-                        <tr>
-                            <td>afk:</td>
-                            <td>{{ctrl.currentUserDetail.afk}}</td>
-                            <td><button>更改功能</button></td>
+                    <table border="1">
+                        <tr class="th">
+                            <td>用户名称</td>
+                            <td>{{ctrl.currentUserDetail.nick}}</td>
+                            <td> </td>
+                        </tr>
+                        <td>当前生命值:</td>
+                        <td>{{ctrl.currentUserDetail.health_current}}</td>
+                        <td><a href="" ng-click="ctrl.HP(ctrl.currentUserDetail.nick)">填满生命值</a></td>
                         </tr>
                         <tr>
-                            <td>经验/等级:</td>
-                            <td>{{ctrl.currentUserDetail.exp}}</td>
+                            <td>总生命值:</td>
+                            <td>{{ctrl.currentUserDetail.health_full}}</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>当前饥饿值:</td>
+                            <td>{{ctrl.currentUserDetail.hunger_current}}</td>
+                            <td><a href="" ng-click="ctrl.Feed(ctrl.currentUserDetail.nick)">填满饥饿度</a></td>
+                        </tr>
+                        <tr>
+                            <td>总饥饿值:</td>
+                            <td>{{ctrl.currentUserDetail.hunger_full}}</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>飞行模式:</td>
-                            <td>{{ctrl.currentUserDetailf.ly_mode}}</td>
+                            <td>{{ctrl.currentUserDetail.fly_mode}}</td>
+                            <td><a href="" ng-click="ctrl.Fly(ctrl.currentUserDetail.nick)">开启飞行模式</a></td>
+                        </tr>
+
+                        <tr>
+                            <td>上帝模式:</td>
+                            <td>{{ctrl.currentUserDetail.god_mode}}</td>
+                            <td><a href="" ng-click="ctrl.God(ctrl.currentUserDetail.nick)">开启上帝模式</a></td>
+                        </tr>
+                        <tr>
+                            <td>afk:</td>
+                            <td>{{ctrl.currentUserDetail.afk}}</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>等级:</td>
+                            <td>{{ctrl.currentUserDetail.level}}</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>经验:</td>
+                            <td>{{ctrl.currentUserDetail.exp}}</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>mod:</td>
                             <td>{{ctrl.currentUserDetail.gamemode}}</td>
+                            <td></td>
                         </tr>
+
                         <tr>
-                            <td>上帝模式:</td>
-                            <td>{{ctrl.currentUserDetail.god_mode}}</td>
-                        </tr>
-                        <tr>
-                            <td>HP:</td>
-                            <td>{{ctrl.currentUserDetail.health}}</td>
-                        </tr>
-                        <tr>
-                            <td>饥饿值:</td>
-                            <td>{{ctrl.currentUserDetail.hunger}}</td>
-                        </tr>
-                        <tr>
-                            <td>IP:</td>
+                            <td>IP地址:</td>
                             <td>{{ctrl.currentUserDetail.ip_address}}</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>jail:</td>
-                            <td>{{ctrl.currentUserDetail.jall}}</td>
+                            <td>{{ctrl.currentUserDetail.jail}}</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>坐标:</td>
                             <td>{{ctrl.currentUserDetail.location}}</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>moeny</td>
                             <td>{{ctrl.currentUserDetail.money}}</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>muted</td>
                             <td>{{ctrl.currentUserDetail.muted}}</td>
-                        </tr>
-                        <tr>
-                            <td>nick</td>
-                            <td>{{ctrl.currentUserDetail.nick}}</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>op:</td>
                             <td>{{ctrl.currentUserDetail.op}}</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>游戏时间:</td>
                             <td>{{ctrl.currentUserDetail.playtime}}</td>
+                            <td>Welcome to play</td>
                         </tr>
 
 
@@ -181,7 +245,7 @@
     <div align="center">
         <img id="logo" src="http://www.hntyjm.com/uploadfile/201008111553552072%281%29.jpg" width="500" height="80  "></div>
     <a name="D"></a>
-        <p><a href="#T">Top</a></p>
+        <p><a href="#T">back to top</a></p>
     </div>
 <div align="right">
     <script>
