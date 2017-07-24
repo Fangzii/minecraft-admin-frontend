@@ -53,6 +53,14 @@
                            <td><button ng-click="ctrl.Fly(name)" class="button1-1 button-1">飞行模式</button></td>
                            <td><button ng-click="ctrl.God(name)" class="button1-1 button-1">上帝模式</button></td>
                        </tr>
+                       <tr>
+                           <td><button ng-click="ctrl.Exp(name)" class="button1-1 button-1">调整用户经验</button></button><input type="text" ng-model="exp" placeholder="请输入整数"></td>
+                           <td><button ng-click="ctrl">设置成管理员</button></td>
+                       </tr>
+                       <tr>
+                           <td><button>更改游戏模式</button></td>
+                           <td></td>
+                       </tr>
                    </table>
                </div>
                <p></p>
@@ -64,10 +72,10 @@
                        </tr>
                        <tr class="td">
                            <td>输入时间</td>
-                           <td><input type="number" ng-model="burntime"  />s</td>
+                           <td><input type="number" ng-model="burntime" placeholder="请输入点燃时间" />s</td>
                        </tr>
                        <tr class="td">
-                           <td><a href="" ng-click="ctrl.Burn(name)" >点燃该用户</a></td>
+                           <td><a href="" ng-click="ctrl.Burn(name,burntime)" >点燃该用户</a></td>
                            <td></td>
                        </tr>
                    </table>
@@ -125,7 +133,6 @@
                         <button ng-click="ctrl.loadCommands(page*count,count)" class="button-1 button1-1">go</button>
                         <button ng-click="ctrl.loadCommands(0,count)" class="button-1 button1-1">首页</button>
                         <button ng-click="ctrl.loadCommands(page+1,count)" class="button-1 button1-1">下一页</button>
-                        <input type="number" ng-model="maxlength" id="maxlength" />
                     </div>
                 <p></p>
             <div class="show-user" ng-if="openeduser">
@@ -135,7 +142,7 @@
                         <td>世界类型</td>
                     </tr>
                     <tr ng-repeat="user in ctrl.users.results" class="td">
-                        <td ><a href="" ng-click="ctrl.loadUserDetail(user.name)" ng-mouseenter="openedusername=openedusername+1" ng-init="openedusername=0" >{{user.name}}</a></td>
+                        <td><a href="" ng-click="ctrl.loadUserDetail(user.name)">{{user.name}}</a></td>
                         <td>{{user.world}}</td>
                     </tr>
 
@@ -171,13 +178,13 @@
                         <tr>
                             <td>飞行模式:</td>
                             <td>{{ctrl.currentUserDetail.fly_mode}}</td>
-                            <td><a href="" ng-click="ctrl.Fly(ctrl.currentUserDetail.nick)">开启飞行模式</a></td>
+                            <td><a href="" ng-click="ctrl.Fly(ctrl.currentUserDetail.nick)">切换飞行模式</a></td>
                         </tr>
 
                         <tr>
                             <td>上帝模式:</td>
                             <td>{{ctrl.currentUserDetail.god_mode}}</td>
-                            <td><a href="" ng-click="ctrl.God(ctrl.currentUserDetail.nick)">开启上帝模式</a></td>
+                            <td><a href="" ng-click="ctrl.God(ctrl.currentUserDetail.nick)">切换上帝模式</a></td>
                         </tr>
                         <tr>
                             <td>afk:</td>
@@ -192,7 +199,7 @@
                         <tr>
                             <td>经验:</td>
                             <td>{{ctrl.currentUserDetail.exp}}</td>
-                            <td></td>
+                            <td><input type="text" placeholder="请输入整数经验值" ng-model="ctrl.currentUserDetail.exp"><button ng-click="ctrl.Exp(ctrl.currentUserDetail.nick)">升级</button></td>
                         </tr>
                         <tr>
                             <td>mod:</td>
@@ -228,7 +235,7 @@
                         <tr>
                             <td>op:</td>
                             <td>{{ctrl.currentUserDetail.op}}</td>
-                            <td></td>
+                            <td><input type="checkbox" ng-model="ctrl.currentUserDetail.op"></td>
                         </tr>
                         <tr>
                             <td>游戏时间:</td>
