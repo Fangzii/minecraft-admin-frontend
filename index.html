@@ -145,15 +145,20 @@
                         <td>世界类型</td>
                     </tr>
                     <tr ng-repeat="user in ctrl.users.results" class="td">
-                        <td><a href="" ng-click="ctrl.loadUserDetail(user.name)">{{user.name}}</a></td>
+                        <td><a href="" ng-click="ctrl.loadUserDetail(user.name)" >{{user.name}}</a></td>
                         <td>{{user.world}}</td>
-                    </tr>
-
                     <tr>
                         <td>目前用户人数:</td>
                         <td>{{ctrl.users.total}}</td>
                     </tr>
-                    <table border="1">
+                    </tr>
+                    <td>
+                        显示用户详情：<input type="checkbox" ng-model="openuserd">
+                    </td>
+                    <td></td>
+                    <tr>
+                </table>
+                    <table border="1" ng-show="openuserd">
                         <tr class="th">
                             <td>用户名称</td>
                             <td>{{ctrl.currentUserDetail.nick}}</td>
@@ -253,10 +258,7 @@
                             <td>{{ctrl.currentUserDetail.playtime}}</td>
                             <td>Welcome to play</td>
                         </tr>
-
-
                     </table>
-                </table>
             </div>
         </div>
     </div>
