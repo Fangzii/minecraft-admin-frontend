@@ -109,7 +109,7 @@
                             <option >15</option>
                             <option >20</option>
                             </select>
-                            行／总共{{ctrl.Commanddata.total}}条</span> 跳到
+                            条／总共{{ctrl.Commanddata.total}}条</span> 跳到
                 <select ng-model="page">
                            <option>1</option>
                            <option>2</option>
@@ -133,9 +133,9 @@
                         <option>20</option>
                        </select><input type="number" ng-model="page" placeholder="请输入跳转页" />页
                 <span>当前第 {{page*count/count}} 页</span>
-                <button ng-click="ctrl.loadCommands(page*count,count)" class="button-1 button1-1">go</button>
+                <button ng-click="ctrl.loadCommands(page*count-count,count)" class="button-1 button1-1">go</button>
                 <button ng-click="ctrl.loadCommands(0,count)" class="button-1 button1-1">首页</button>
-                <button ng-click="ctrl.loadCommands(page+1,count)" class="button-1 button1-1">下一页</button>
+                <button ng-click="ctrl.loadCommands(page*count,count)" class="button-1 button1-1">下一页</button>
             </div>
             <p></p>
             <div class="show-user" ng-if="openeduser">
@@ -202,7 +202,7 @@
                         <tr>
                             <td>经验:</td>
                             <td>{{ctrl.currentUserDetail.exp}}</td>
-                            <td><input type="text" placeholder="请输入整数经验值" ng-model="ctrl.currentUserDetail.exp"><button ng-click="ctrl.Exp(ctrl.currentUserDetail.nick,ctrl.currentUserDetail.exp)">升级</button></td>
+                            <td><input type="text" placeholder="请输入整数经验值" ng-model="ctrl.currentUserDetail.exp"><button ng-click="ctrl.Exp(ctrl.currentUserDetail.nick,ctrl.currentUserDetail.exp)" class="button-1 button1-1">升级</button></td>
                         </tr>
                         <tr>
                             <td>mod:</td>
@@ -212,7 +212,7 @@
                                     <option>creative</option>
                                     <option>subsist</option>
                                 </select>
-                                <button ng-click="ctrl.Mod(ctrl.currentUserDetail.nick,trl.currentUserDetail.gamemode)">更改</button>
+                                <button ng-click="ctrl.Mod(ctrl.currentUserDetail.nick,trl.currentUserDetail.gamemode)" class="button-1 button1-1">更改</button>
                             </td>
                         </tr>
                         <tr>
@@ -245,7 +245,7 @@
                             <td>{{ctrl.currentUserDetail.op}}</td>
                             <td><input type="checkbox" ng-model="ctrl.currentUserDetail.op"  >
                             </select>
-                                <button ng-click="ctrl.Op(ctrl.currentUserDetail.nick,ctrl.currentUserDetail.op)">更改</button>
+                                <button ng-click="ctrl.Op(ctrl.currentUserDetail.nick,ctrl.currentUserDetail.op)" class="button-1 button1-1">更改</button>
                             </td>
                         </tr>
                         <tr>
