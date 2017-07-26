@@ -65,7 +65,6 @@
                             <option>creative</option>
                             <option>survival</option>
                             </select>
-                            <input type="text" ng-model="ctrl.currentUserDetail.gamemode" placeholder="creative or survival">
                         </td>
                         <td></td>
                     </tr>
@@ -223,7 +222,7 @@
                                     <option>creative</option>
                                     <option>survival</option>
                                 </select>
-                                <button ng-click="ctrl.Mod(ctrl.currentUserDetail.nick,trl.currentUserDetail.gamemode)" class="button-1 button1-1">更改</button>
+                                <button ng-click="ctrl.Mod(ctrl.currentUserDetail.nick,ctrl.currentUserDetail.gamemode)" class="button-1 button1-1">更改</button>
                             </td>
                         </tr>
                         <tr>
@@ -283,6 +282,7 @@
     </script>
 
 </div>
+
 </body>
 
 </html>
