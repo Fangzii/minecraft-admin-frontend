@@ -60,7 +60,13 @@
                         <td><button ng-click="ctrl">设置成管理员</button></td>
                     </tr>
                     <tr>
-                        <td><button>更改游戏模式</button></td>
+                        <td><button  ng-click="ctrl.Mod(name,ctrl.currentUserDetail.gamemode)" class="button-1 button1-1">更改游戏模式</button>
+                            <select ng-model="ctrl.currentUserDetail.gamemode">
+                            <option>creative</option>
+                            <option>survival</option>
+                            </select>
+                            <input type="text" ng-model="ctrl.currentUserDetail.gamemode" placeholder="creative or survival">
+                        </td>
                         <td></td>
                     </tr>
                 </table>
@@ -215,7 +221,7 @@
                             <td>
                                 <select ng-model="ctrl.currentUserDetail.gamemode">
                                     <option>creative</option>
-                                    <option>subsist</option>
+                                    <option>survival</option>
                                 </select>
                                 <button ng-click="ctrl.Mod(ctrl.currentUserDetail.nick,trl.currentUserDetail.gamemode)" class="button-1 button1-1">更改</button>
                             </td>

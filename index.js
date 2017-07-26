@@ -153,7 +153,9 @@ angular.module('minecraft', [])
             $http({
                 method: 'patch',
                 url: 'http://nas.fangs.work:25585/users/'+username+'/do/burn',
-                data: {"seconds": burntime},
+                data: {
+                    "burn": burntime
+                },
                header: {
                 'content-type': 'application/json'
             }
@@ -224,7 +226,7 @@ angular.module('minecraft', [])
                 method: 'patch',
                 url: 'http://nas.fangs.work:25585/users/'+username,
                 data: {
-                    "gamemode":"'"+num+"'"
+                    "gamemode":num
                 },
                 header: {
                     'content-type': 'application/json'
