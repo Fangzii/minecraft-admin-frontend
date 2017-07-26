@@ -8,17 +8,14 @@
     <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular.min.js"></script>
     <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-resource.min.js"></script>
     <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-route.min.js"></script>
-    <script src="index.js"></script>
+    <script src="src/index.js"></script>
     <script src="photo.html"></script>
     <script src="script.js"></script>
     <title>MINECRAFT | Command</title>
     <link rel="icon" type="image/x-cion" href="http://attachment.mcbbs.net/forum/201012/21/170145ojoxyxj0ybfjyijy.jpg">
     <link rel="stylesheet" href="animations.css">
     <meta charset="utf-8" />
-
 </head>
-
-
 <div align="center">
     <a name="T"></a>
     <div style="margin:0 auto;width:1000px;height:20px;overflow:hidden;">
@@ -57,7 +54,7 @@
                     </tr>
                     <tr>
                         <td><button ng-click="ctrl.Exp(name,exp)" class="button1-1 button-1">调整用户经验</button></button><input type="text" ng-model="exp" placeholder="请输入整数"></td>
-                        <td><button ng-click="ctrl">设置成管理员</button></td>
+                        <td><button ng-click="ctrl.Op(name,ctrl.currentUserDetail.op)" class="button-1 button1-1">是否设置成管理</button>: {{ctrl.currentUserDetail.op}}<input type="checkbox" ng-model="ctrl.currentUserDetail.op"></td>
                     </tr>
                     <tr>
                         <td><button  ng-click="ctrl.Mod(name,ctrl.currentUserDetail.gamemode)" class="button-1 button1-1">更改游戏模式</button>
@@ -79,7 +76,7 @@
                     </tr>
                     <tr class="td">
                         <td>输入时间</td>
-                        <td><input type="number" ng-model="burntime" placeholder="请输入点燃时间" />s</td>
+                        <td><input type="number" ng-model="burntime" placeholder="请输入点燃时间" min="0"/>s</td>
                     </tr>
                     <tr class="td">
                         <td><a href="" ng-click="ctrl.Burn(name,burntime)">点燃该用户</a></td>
@@ -105,7 +102,7 @@
                 </tr>
             </table>
             <div ng-if="openedcommend" ng-switch on="count">
-                <table ng-repeat="">
+                <table ng-repeat=""><md-switch></md-switch>
                 </table>
                 <span>每页
                             <select ng-model="count" >
@@ -136,7 +133,7 @@
                         <option>18</option>
                         <option>19</option>
                         <option>20</option>
-                       </select><input type="number" ng-model="page" placeholder="请输入跳转页" />页
+                       </select><input type="number" ng-model="page" placeholder="请输入跳转页" min="0" max="100"/>页
                 <span>当前第 {{page*count/count}} 页</span>
                 <button ng-click="ctrl.loadCommands(page*count-count,count)" class="button-1 button1-1">go</button>
                 <button ng-click="ctrl.loadCommands(0,count)" class="button-1 button1-1">首页</button>
