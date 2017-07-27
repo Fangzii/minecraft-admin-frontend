@@ -246,6 +246,41 @@ angular.module('minecraft', [])
 
 
 
+        var myApp = angular.module('minecraft',["highcharts-ng"]);
+
+        myApp.controller('BigChart', function() {
+            var vm = this;
+
+            vm.charts = {
+                options: {
+                    chart: {
+                        type: 'line',
+                        zoomType: 'x'
+                    },
+                    tooltip: {
+                        xDateFormat: '%Y-%m-%d %H:%M:%S',
+                        valueDecimals: 2
+                    },
+                    xAxis: {
+                        type: 'datetime',
+                        dateTimeLabelFormats: {
+                            hour: '%H:%M'
+                        },
+                        minRange: 1000, // 不能放大超过1s
+                        minTickInterval: 1000 // 放大间隔最小为1s
+                    }
+                },
+                series: {
+                    data: [100.0, 99.0, 100.0, 98.039216, 100.0, 99.0, 100.0, 100.0, 100.0, 100.0, 97.087379, 99.0, 99.009901, 100.0, 99.0, 100.0, 99.009901, 100.0, 100.0, 98.039216, 100.0, 100.0, 100.0, 99.009901, 99.009901, 100.0, 99.009901, 100.0, 99.0, 100.0, 100.0, 99.0, 100.0, 99.009901, 100.0, 99.0, 99.0, 99.009901, 99.009901, 100.0, 100.0, 99.009901, 100.0, 99.009901, 100.0, 99.0, 98.039216, 100.0, 99.0, 100.0, 99.0, 100.0, 100.0, 100.0, 100.0, 100.0, 99.0, 100.0, 100.0],
+                    name: '192.168.17.136'
+                },
+                title: {
+
+                    text: null
+                }
+            }
+        })
+
     })
 
 
