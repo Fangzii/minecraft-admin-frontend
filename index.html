@@ -1,16 +1,5 @@
 <!doctype html>
 <html ng-app="minecraft">
-
-    <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular.min.js"></script>
-    <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-animate.js"></script>
-    <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-resource.min.js"></script>
-    <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-route.min.js"></script>
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.5.1/restangular.js"></script>
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.5.1/restangular.min.js"></script>
-    <script type="text/javascript" src="highcharts-ng.js"></script>
-    <script type="text/javascript" src="lib/Highcharts-5.0.12/code/highcharts.js"></script>
-    <script src="index.js"></script>
-    <script src="script.js"></script>
     <title>MINECRAFT | Command</title>
     <link rel="icon" type="image/x-cion" href="http://attachment.mcbbs.net/forum/201012/21/170145ojoxyxj0ybfjyijy.jpg">
     <link rel="stylesheet" href="animations.css">
@@ -91,7 +80,7 @@
         </div>
         <p></p>
         <div>
-            <table border="1" ng-if="openedcommend" class="show-user">
+            <table border="1" ng-if="openedcommend">
                 <tr class="th">
                     <td>命令</td>
                     <td>说明</td>
@@ -140,7 +129,7 @@
                 <button ng-click="ctrl.loadCommands(page*count,count)" class="button-1 button1-1">下一页</button>
             </div>
             <p></p>
-            <div class="show-user" ng-if="openeduser">
+            <div ng-if="openeduser">
                 <table border="1">
                     <tr class="th">
                         <td>用户名称</td>
@@ -155,12 +144,12 @@
                         <td>{{ctrl.users.total}}</td>
                     </tr>
                     <td>
-                        显示用户详情：<input type="checkbox" ng-model="openuserd">
+                        显示用户详情：<input type="checkbox" ng-model="openuserd" ng-init="false">
                     </td>
                     <td></td>
                     <tr>
                 </table>
-                    <table border="1" ng-show="openuserd">
+                    <table border="1"  class="animate-if" ng-if="openuserd">
                         <tr class="th">
                             <td>用户名称</td>
                             <td>{{ctrl.currentUserDetail.nick}}</td>
@@ -269,16 +258,23 @@
     <a name="D"></a>
     <p><a href="#T">back to top</a></p>
 </div>
-    
     <div align="right">
     <script>
         document.write("<span id=lblTime width='80px' height='10px' Font-Size='6pt' font-family= '.SF NS Text' style='color:burlywood'  ></span>") //输出显示日期的容器
             //每1000毫秒(即1秒) 执行一次本段代码
         setInterval("lblTime.innerText=new Date().toLocaleString()", 1000)
     </script>
-
 </div>
-
+    <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular.js"></script>
+    <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-animate.js"></script>
+    <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-resource.min.js"></script>
+    <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-route.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.5.1/restangular.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.5.1/restangular.min.js"></script>
+    <script type="text/javascript" src="highcharts-ng.js"></script>
+    <script type="text/javascript" src="lib/Highcharts-5.0.12/code/highcharts.js"></script>
+    <script src="index.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

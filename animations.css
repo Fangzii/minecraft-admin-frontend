@@ -1,3 +1,5 @@
+
+
 h1{
     color: green;
 }
@@ -185,15 +187,3 @@ background-image: url("https://media.mojang.com/blog-image/2c34ca1217c7d95e76a6f
     width: 1024px;
     height: 436px;
 }
-
-
-.show-user.ng-enter,
-.show-user.ng-leave.ng-leave-active {
-    opacity:0;
-}
-
-.show-user.ng-leave,
-.show-user.ng-enter.ng-enter-active {
-    opacity:1;
-}
-
