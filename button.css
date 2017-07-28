@@ -1,0 +1,224 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+html {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption, th, td {
+    text-align: left;
+    font-weight: normal;
+    vertical-align: middle;
+}
+
+q, blockquote {
+    quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+    content: "";
+    content: none;
+}
+
+a img {
+    border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+    display: block;
+}
+
+body {
+    text-align: center;
+    font-family: "Lato";
+}
+
+.wrap {
+    position: relative;
+    margin: auto;
+    margin-top: 5%;
+    width: 191px;
+    text-align: center;
+}
+.wrap button {
+    display: block;
+    height: 60px;
+    padding: 0;
+    width: 191px;
+    background: none;
+    margin: auto;
+    border: 2px solid #1ECD97;
+    font-size: 18px;
+    font-family: "Lato";
+    color: #1ECD97;
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
+    border-radius: 30px;
+    -moz-transition: background 0.4s, color 0.4s, font-size 0.05s, width 0.4s, border 0.4s;
+    -o-transition: background 0.4s, color 0.4s, font-size 0.05s, width 0.4s, border 0.4s;
+    -webkit-transition: background 0.4s, color 0.4s, font-size 0.05s, width 0.4s, border 0.4s;
+    transition: background 0.4s, color 0.4s, font-size 0.05s, width 0.4s, border 0.4s;
+}
+.wrap button:hover {
+    background: #1ECD97;
+    color: white;
+}
+.wrap img {
+    position: absolute;
+    top: 11px;
+    display: none;
+    left: 71.5px;
+    -moz-transform: scale(0.6, 0.6);
+    -ms-transform: scale(0.6, 0.6);
+    -webkit-transform: scale(0.6, 0.6);
+    transform: scale(0.6, 0.6);
+}
+.wrap svg {
+    -moz-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
+    transform: rotate(270deg);
+    /* @include rotate(270deg); */
+    position: absolute;
+    top: -2px;
+    left: 62px;
+    display: none;
+}
+.wrap svg .circle_2 {
+    stroke-dasharray: 0 200;
+}
+.wrap svg .fill_circle {
+    -moz-animation: fill-stroke 2s 0.4s linear forwards;
+    -webkit-animation: fill-stroke 2s 0.4s linear forwards;
+    animation: fill-stroke 2s 0.4s linear forwards;
+}
+.wrap .circle {
+    width: 60px;
+    border: 3px solid #c3c3c3;
+    /* border: none; */
+}
+.wrap .circle:hover {
+    background: none;
+}
+.wrap .filled {
+    background: #1ECD97;
+    color: white;
+    line-height: 60px;
+    font-size: 160%;
+}
+
+footer p {
+    color: #738087;
+    margin-top: 100px;
+    font-size: 18px;
+    line-height: 28px;
+}
+
+@-moz-keyframes fill-stroke {
+    0% {
+        stroke-dasharray: 0 200;
+    }
+    20% {
+        stroke-dasharray: 20 200;
+    }
+    40% {
+        stroke-dasharray: 30 200;
+    }
+    50% {
+        stroke-dasharray: 90 200;
+    }
+    70% {
+        stroke-dasharray: 120 200;
+    }
+    90% {
+        stroke-dasharray: 140 200;
+    }
+    100% {
+        stroke-dasharray: 182 200;
+    }
+}
+@-webkit-keyframes fill-stroke {
+    0% {
+        stroke-dasharray: 0 200;
+    }
+    20% {
+        stroke-dasharray: 20 200;
+    }
+    40% {
+        stroke-dasharray: 30 200;
+    }
+    50% {
+        stroke-dasharray: 90 200;
+    }
+    70% {
+        stroke-dasharray: 120 200;
+    }
+    90% {
+        stroke-dasharray: 140 200;
+    }
+    100% {
+        stroke-dasharray: 182 200;
+    }
+}
+@keyframes fill-stroke {
+    0% {
+        stroke-dasharray: 0 200;
+    }
+    20% {
+        stroke-dasharray: 20 200;
+    }
+    40% {
+        stroke-dasharray: 30 200;
+    }
+    50% {
+        stroke-dasharray: 90 200;
+    }
+    70% {
+        stroke-dasharray: 120 200;
+    }
+    90% {
+        stroke-dasharray: 140 200;
+    }
+    100% {
+        stroke-dasharray: 182 200;
+    }
+}
+a, p {
+    line-height: 1.6em;
+}
+
+a {
+    color: #738087;
+}
