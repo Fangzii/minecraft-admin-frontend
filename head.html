@@ -1,37 +1,27 @@
 <!doctype html>
-<html ng-app="myApp">
+<html lang="en" ng-app=“MyApp">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="lib/bootstrap/3.2.0/css/bootstrap.min.css">
-    <style>
-        .page-list .pagination {float:left;}
-        .page-list .pagination span {cursor: pointer;}
-        .page-list .pagination .separate span{cursor: default; border-top:none;border-bottom:none;}
-        .page-list .pagination .separate span:hover {background: none;}
-        .page-list .page-total {float:left; margin: 25px 20px;}
-        .page-list .page-total input, .page-list .page-total select{height: 26px; border: 1px solid #ddd;}
-        .page-list .page-total input {width: 40px; padding-left:3px;}
-        .page-list .page-total select {width: 50px;}
-    </style>
+    <link rel="stylesheet" href="../../Downloads/angular-1.6.5/docs/components/bootstrap-3.1.1/css/bootstrap.css">
+    <link rel="stylesheet" href="../../Downloads/bootstrap-switch-master/dist/css/bootstrap3/bootstrap-switch.css">
+    <script src="../../Downloads/angular-1.6.5/docs/components/jquery-3.2.1/jquery.js"></script>
+    <script src="../../Downloads/bootstrap-switch-master/src/js/bootstrap-switch.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/angular-material/1.1.4/angular-material.css">
+    <link rel="stylesheet" href="photo.css">
+    <link rel="stylesheet" href="../../Downloads/bower-material-master/modules/js/switch/switch.css">
 </head>
-<body ng-controller="testController">
 
-<tm-pagination conf="paginationConf"></tm-pagination>
+<body>
+<input type="checkbox" name="my-checkbox" checked>
+<div class="inset" ng-controller="SwitchDemoCtrl" ng-cloak>
+    <input type="checkbox" name="my-checkbox" checked>
+</div>
+<md-switch>1</md-switch>
 
-<script src="lib/angularjs/1.2.22/angular.min.js"></script>
-<script src="src/pagination/tm.pagination.js"></script>
-<script>
-    angular.module('myApp', ['tm.pagination']).controller('testController', function($scope, $timeout){
-        $scope.paginationConf = {
-            currentPage: 1,
-            totalItems: 8000,
-            itemsPerPage: 15,
-            pagesLength: 15,
-            perPageOptions: [10, 20, 30, 40, 50],
-            onChange: function(){
-            }
-        };
-    })
-</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-aria.min.js"></script>
+<script src="https://cdn.bootcss.com/angular-material/1.1.4/angular-material.js"></script>
+<script src="script.js"></script>
 </body>
-</html>
+</html></html>
