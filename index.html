@@ -2,11 +2,7 @@
 <html ng-app="minecraft">
 <head>
     <title>MINECRAFT | Command</title>
-    <link rel="stylesheet" href="photo.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel="icon" type="image/x-cion" href="http://attachment.mcbbs.net/forum/201012/21/170145ojoxyxj0ybfjyijy.jpg">
     <link rel="stylesheet" href="animations.css">
-    <link rel="stylesheet" href="bootstrap.css">
     <meta charset="utf-8" />
 </head>
 <div align="center">
@@ -271,57 +267,14 @@
         setInterval("lblTime.innerText=new Date().toLocaleString()", 1000)
     </script>
 </div>
-<div  align="center">
-<div class="house" id="house" data-rooms="6">
-    <div class="house-wings" data-flip-key="wings">
-        <div class="house-left-wing">
-            <div class="house-window"></div>
-            <div class="house-window"></div>
-            <div class="house-sparkle">
-                <div class="house-sparkle-dots"></div>
-            </div>
-        </div>
-        <div class="house-right-wing">
-            <div class="house-window"></div>
-            <div class="house-window"></div>
-            <div class="house-sparkle">
-                <div class="house-sparkle-dots"></div>
-            </div>
-        </div>
-        <div class="house-roof">
-            <div class="house-ledge"></div>
-        </div>
-    </div>
-    <div class="house-front" data-flip-key="front">
-        <div class="house-chimney"></div>
-        <div class="house-facade"></div>
-        <div class="house-window">
-            <div class="house-sparkle">
-                <div class="house-sparkle-dots"></div>
-            </div>
-        </div>
-        <div class="house-doorway">
-            <div class="house-stairs"></div>
-            <div class="house-door"></div>
-        </div>
-        <div class="house-gable">
-            <div class="house-roof">
-                <div class="house-ledge"></div>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 <label class="house-label" for="range" id="label">Rooms</label>
 <input type="range" min="3" max="6" step="1" value="6" id="range">
 <script src='https://unpkg.com/flipping@0.5.3/dist/flipping.animationFrame.js'></script>
 
 </div>
-<div ng-controller="testController">
 
-<tm-pagination conf="paginationConf"></tm-pagination>>
-
-</div>
 <script>
 
 
@@ -329,10 +282,11 @@
 
 <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular.js"></script>
 <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-animate.js"></script>
-    <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-resource.min.js"></script>
+<script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-material.js"></script>
+<script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-resource.min.js"></script>
     <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-route.min.js"></script>
-    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-aria.min.js'></script>
-    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-messages.min.js'></script>
+    <script src='https://cdn.bootcss.com/angular.js/1.6.4/angular-aria.min.js'></script>
+    <script src='https://cdn.bootcss.com/angular.js/1.6.4/angular-messages.min.js'></script>
     <script src='https://cdn.rawgit.com/angular/bower-material/v0.9.7-master-814431f/angular-material.js'></script>
     <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/assets-cache.js'></script>
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.5.1/restangular.js"></script>

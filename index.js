@@ -1,34 +1,26 @@
 angular.module('minecraft', [])
     .controller('MinecraftController', function ($scope,$http) {
         var self = this;
+
         $scope.searchText = '';
         var page;
+        $scope.open=false;
+        $scope.open=!$scope.poen;
 
         this.commands = [{
-                command: '/list',
-                description: '列出当前用户'
-            },
+            command: '/list',
+            description: '列出当前用户'
+        },
             {
                 command: '/user',
                 description: '列出当前用户'
             }
         ]
-
-        this.page = function (page,total,count) {
-            page=total/count
-                document.write(page)
-        }
-
-            this.start = function (page,count) {
-                alert("page*count");
-       }
-
-
-        this.loadCommands = function (start,count) {
+        this.loadCommands = function (start, count) {
 
             $http({
                 method: 'GET',
-                url: 'http://nas.fangs.work:25585/commands?start='+start+'&count='+count
+                url: 'http://nas.fangs.work:25585/commands?start=' + start + '&count=' + count
             }).then(function successCallback(response) { /**/
                 // this callback will be called asynchronously
                 // when the response is available
@@ -43,247 +35,79 @@ angular.module('minecraft', [])
 
         this.loadUsers = function () {
 
-            $http({
-                method: 'GET',
-                url: 'http://nas.fangs.work:25585/users'
-            }).then(function successCallback(response) {
-                // this callback will be called asynchronously
-                // when the response is available
-                self.users = response.data
-                console.log(self.users)
-            }, function errorCallback(response) {
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
-            });
+            var userList = Restangular.all('users').getList()
         }
-        
+
         this.loadUserDetail = function (username) {
             username = username.replace('[AFK]', '')
-            $http({
-                method: 'GET',
-                url: 'http://nas.fangs.work:25585/users/'+username
-            }).then(function successCallback(response) {
-                // this callback will be called asynchronously
-                // when the response is available
-                self.currentUserDetail = response.data
-                console.log(self.username)
-                this.self.currentUserDetail
-
-
-
-            }, function errorCallback(response) {
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
-            });
+            var userList = Restangular.all('users').getList()
+            var userDetail = Restangular.one('users', username).get()
         }
 
 
         this.HP = function (username) {
-            $http({
-                method: 'patch',
-                url: 'http://nas.fangs.work:25585/users/'+username+'/do/heal'
-            }).then(function successCallback(response) {
-                // this callback will be called asynchronously
-                // when the response is available
-                self.currentUserDetail = response.data
-
-
-
-
-            }, function errorCallback(response) {
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
-            });
+            var userList = Restangular.all('users').getList()
+            var userDetail = Restangular.one('users', username).get()
+            var userDoheal = Restangular.one('users', username).one('do', 'heal').patch()
         }
 
-        this.Feed= function (username) {
-            $http({
-                method: 'patch',
-                url: 'http://nas.fangs.work:25585/users/'+username+'/do/feed'
-            }).then(function successCallback(response) {
-                // this callback will be called asynchronously
-                // when the response is available
-                self.currentUserDetail = response.data
-
-
-
-
-            }, function errorCallback(response) {
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
-            });
+        this.Feed = function (username) {
+            var userList = Restangular.all('users').getList()
+            var userDetail = Restangular.one('users', username).get()
+            var userDoheal = Restangular.one('users', username).one('do', 'feed').patch()
         }
 
-        this.Fly= function (username) {
-            $http({
-                method: 'post',
-                url: 'http://nas.fangs.work:25585/users/'+username+'/toggle_fly'
-            }).then(function successCallback(response) {
-                // this callback will be called asynchronously
-                // when the response is available
-                self.currentUserDetail = response.data
-
-
-
-
-            }, function errorCallback(response) {
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
-            });
+        this.Fly = function (username) {
+            var userList = Restangular.all('users').getList()
+            var userDetail = Restangular.one('users', username).get()
+            var usertofly = Restangular.one('users', username).one('toggle_fly').post()
         }
 
-        this.God= function (username) {
-            $http({
-                method: 'post',
-                url: 'http://nas.fangs.work:25585/users/'+username+'/toggle_god'
-            }).then(function successCallback(response) {
-                // this callback will be called asynchronously
-                // when the response is available
-                self.currentUserDetail = response.data
-
-
-
-
-            }, function errorCallback(response) {
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
-            });
+        this.God = function (username) {
+            var userList = Restangular.all('users').getList()
+            var userDetail = Restangular.one('users', username).get()
+            var usertogod = Restangular.one('users', username).one('toggle_god').post()
         }
-        this.Burn= function (username,burntime) {
-            $http({
-                method: 'patch',
-                url: 'http://nas.fangs.work:25585/users/'+username+'/do/burn',
-                data: {
-                    "burn": burntime
-                },
-               header: {
-                'content-type': 'application/json'
-            }
-            }).then(function successCallback(response) {
-                // this callback will be called asynchronously
-                // when the response is available
-                self.currentUserDetail = response.data
-                console.log(self.Burn)
+        this.Burn = function (username, num) {
 
+            firstAccount.getList("burn", {"burn": num}).then(function (users) {
+                // Instead of posting nested element, a collection can post to itself
+                // POST /accounts/123/users
+                users.patch({"burn": num});
 
-
-
-            }, function errorCallback(response) {
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
-            });
+            })
         }
 
-        this.Exp= function (username,num) {
-            $http({
-                method: 'patch',
-                url: 'http://nas.fangs.work:25585/users/'+username,
-                data: {
-                    "exp":num
-                },
-                header: {
-                    'content-type': 'application/json'
-                }
-            }).then(function successCallback(response) {
-                // this callback will be called asynchronously
-                // when the response is available
+        this.Exp = function (username, num) {
+            firstAccount.getList("users", {"exp": num}).then(function (users) {
+                // Instead of posting nested element, a collection can post to itself
+                // POST /accounts/123/users
+                users.patch({"exp": num});
 
-
-
-
-            }, function errorCallback(response) {
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
-            });
+            })
         }
 
-        this.Op= function (username,num) {
-            $http({
-                method: 'patch',
-                url: 'http://nas.fangs.work:25585/users/'+username,
-                data: {
-                    "op":num
-                },
-                header: {
-                    'content-type': 'application/json'
-                }
-            }).then(function successCallback(response) {
-                // this callback will be called asynchronously
-                // when the response is available
+        this.Op = function (username, num) {
+            firstAccount.getList("users", {"op": num}).then(function (users) {
+                // Instead of posting nested element, a collection can post to itself
+                // POST /accounts/123/users
+                users.patch({"op": num});
 
-
-
-
-            }, function errorCallback(response) {
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
-            });
+            })
         }
 
 
-        this.Mod= function (username,num) {
-            $http({
-                method: 'patch',
-                url: 'http://nas.fangs.work:25585/users/'+username,
-                data: {
-                    "gamemode":num
-                },
-                header: {
-                    'content-type': 'application/json'
-                }
-            }).then(function successCallback(response) {
-                // this callback will be called asynchronously
-                // when the response is available
+        this.Mod = function (username, num) {
+            firstAccount.getList("users", {"gamemode": num}).then(function (users) {
+                // Instead of posting nested element, a collection can post to itself
+                // POST /accounts/123/users
+                users.patch({'gamemode': num});
 
+            })
 
-
-
-            }, function errorCallback(response) {
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
-            });
         }
 
 
-
-        var myApp = angular.module('minecraft',["highcharts-ng"]);
-
-        myApp.controller('BigChart', function() {
-            var vm = this;
-
-            vm.charts = {
-                options: {
-                    chart: {
-                        type: 'line',
-                        zoomType: 'x'
-                    },
-                    tooltip: {
-                        xDateFormat: '%Y-%m-%d %H:%M:%S',
-                        valueDecimals: 2
-                    },
-                    xAxis: {
-                        type: 'datetime',
-                        dateTimeLabelFormats: {
-                            hour: '%H:%M'
-                        },
-                        minRange: 1000, // 不能放大超过1s
-                        minTickInterval: 1000 // 放大间隔最小为1s
-                    }
-                },
-                series: {
-                    data: [100.0, 99.0, 100.0, 98.039216, 100.0, 99.0, 100.0, 100.0, 100.0, 100.0, 97.087379, 99.0, 99.009901, 100.0, 99.0, 100.0, 99.009901, 100.0, 100.0, 98.039216, 100.0, 100.0, 100.0, 99.009901, 99.009901, 100.0, 99.009901, 100.0, 99.0, 100.0, 100.0, 99.0, 100.0, 99.009901, 100.0, 99.0, 99.0, 99.009901, 99.009901, 100.0, 100.0, 99.009901, 100.0, 99.009901, 100.0, 99.0, 98.039216, 100.0, 99.0, 100.0, 99.0, 100.0, 100.0, 100.0, 100.0, 100.0, 99.0, 100.0, 100.0],
-                    name: '192.168.17.136'
-                },
-                title: {
-
-                    text: null
-                }
-            }
-        })
 
     })
-
-
-
-
 
