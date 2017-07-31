@@ -27,7 +27,7 @@
         <div>
             <button href="" ng-click="ctrl.loadCommands(0,20)" ng-mouseenter="openedcommend=openedcommend+1" ng-init="openedcommend=0" class="button button1">读取命令</button>
             <button href="" ng-click="ctrl.loadUsers()" ng-mouseenter="openeduser=openeduser+1" ng-init="openeduser=0" class="button button1">读取用户</button>
-            <button ng-click="toggleLeft()" class="button-2 button2-2">作弊</button>
+            <button ng-click="toggleLeft()" class="button button1">作弊器</button>
             <button ng-click="openedcommendChange2=openedcommendChange2+1" ng-init="openedcommendChange2=0" class="button-3 button3-3">恶搞</button>
             <div ng-if="openedcommendChange" class="playground">
                 <table border="1">
@@ -322,6 +322,9 @@
             </section>
 <div>
         </div>
+            <md-button ng-click="openDialog($event)" class="md-raised">搜索</md-button>
+            </md-content>
+
         </div>
     <div align="center">
         </div>
@@ -359,6 +362,7 @@
             </md-fab-actions>
         </md-fab-speed-dial>
     </div>
+
 
 
 <label class="house-label" for="range" id="label">Rooms</label>

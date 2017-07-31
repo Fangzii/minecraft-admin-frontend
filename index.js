@@ -1,8 +1,21 @@
 angular.module('minecraft', ['ngMaterial'])
-    .controller('MinecraftController', function ($scope,$http, $timeout, $mdSidenav) {
+    .controller('MinecraftController', function ($scope,$http, $timeout, $mdSidenav,$mdDialog) {
         var self = this;
         $scope.toggleLeft = buildToggler('left');
         $scope.toggleRight = buildToggler('right');
+
+        $scope.openDialog = function(ev) {
+            $mdDialog.show(
+                $mdDialog.alert()
+                    .parent(angular.element(document.querySelector('#popupContainer')))
+                    .clickOutsideToClose(true)
+                    .title('功能未完成')
+                    .textContent('')
+                    .ariaLabel('Alert Dialog Demo')
+                    .ok('确定')
+                    .targetEvent(ev)
+            )
+        }
 
         function buildToggler(componentId) {
             return function() {
@@ -221,6 +234,16 @@ angular.module('minecraft', ['ngMaterial'])
             });
         }
 
+        this.openDialog = function($event) {
+            $mdDialog.show({
+                controller: DialogCtrl,
+                controllerAs: 'ctrl',
+                templateUrl: 'head.html',
+                parent: angular.element(document.body),
+                targetEvent: $event,
+                clickOutsideToClose:true
+            })
+        }
 
         this.Mod= function (username,num) {
             $http({
