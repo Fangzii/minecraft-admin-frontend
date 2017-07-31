@@ -3,6 +3,8 @@
 <head>
     <title>MINECRAFT | Command</title>
     <link rel="stylesheet" href="animations.css">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link href="https://cdn.bootcss.com/angular-material/1.1.4/angular-material.css" rel="stylesheet">
     <meta charset="utf-8" />
 </head>
 <div align="center">
@@ -25,13 +27,16 @@
         <div>
             <button href="" ng-click="ctrl.loadCommands(0,20)" ng-mouseenter="openedcommend=openedcommend+1" ng-init="openedcommend=0" class="button button1">读取命令</button>
             <button href="" ng-click="ctrl.loadUsers()" ng-mouseenter="openeduser=openeduser+1" ng-init="openeduser=0" class="button button1">读取用户</button>
-            <button ng-click="openedcommendChange=openedcommendChange+1" ng-init="openedcommendChange=0" class="button-2 button2-2">作弊</button>
+            <button ng-click="toggleLeft()" class="button-2 button2-2">作弊</button>
             <button ng-click="openedcommendChange2=openedcommendChange2+1" ng-init="openedcommendChange2=0" class="button-3 button3-3">恶搞</button>
             <div ng-if="openedcommendChange" class="playground">
                 <table border="1">
                     <tr class="th">
                         <td>输入用户名称</td>
-                        <td><input type="text" ng-model="name" placeholder="请输入用户名"></td>
+                        <td><md-input-container >
+                                <label>请输入用户名</label>
+                                <input  ng-model="name">
+                            </md-input-container></td>
                     </tr>
                     <tr class="td">
                         <td><button ng-click="ctrl.Feed(name)" class="button1-1 button-1">填满饥饿度</button></td>
@@ -74,6 +79,8 @@
                 </table>
             </div>
         </div>
+
+
         <div ng-repeat="cmd in ctrl.commandscmd ">
             <p><b>名称</b> {{cmd.command}}</p>
             <p><b>说明</b> {{cmd.description}}</p>
@@ -93,7 +100,7 @@
                 </tr>
             </table>
             <div ng-if="openedcommend" ng-switch on="count">
-                <table ng-repeat=""><md-switch></md-switch>
+                <table ng-repeat="">
                 </table>
                 <span>每页
                             <select ng-model="count" >
@@ -103,7 +110,7 @@
                             <option >20</option>
                             </select>
                             条／总共{{ctrl.Commanddata.total}}条</span> 跳到
-                <select ng-model="page">
+                <select ng-model="page">w
                            <option>1</option>
                            <option>2</option>
                            <option>3</option>
@@ -164,7 +171,6 @@
                         <tr>
                             <td>总生命值:</td>
                             <td>{{ctrl.currentUserDetail.health_full}}</td>
-                            <td><md-switch>1</md-switch></td>
                         </tr>
                         <tr>
                             <td>当前饥饿值:</td>
@@ -241,9 +247,7 @@
                         <tr>
                             <td>op:</td>
                             <td>{{ctrl.currentUserDetail.op}}</td>
-                            <td><input type="checkbox" ng-model="ctrl.currentUserDetail.op"  >
-                            </select>
-                                <button ng-click="ctrl.Op(ctrl.currentUserDetail.nick,ctrl.currentUserDetail.op)" class="button-1 button1-1">更改</button>
+                            <td><md-switch class="md-primary" ng-model="ctrl.currentUserDetail.op"></md-switch><button ng-click="ctrl.Op(ctrl.currentUserDetail.nick,ctrl.currentUserDetail.op)" class="button-1 button1-1">更改</button>
                             </td>
                         </tr>
                         <tr>
@@ -254,7 +258,71 @@
                     </table>
             </div>
         </div>
-    </div>
+        <div  layout="column" style="height: 500px; " ng-cloak>
+
+            <section layout="row" flex>
+
+                <md-sidenav class="md-sidenav-left" md-component-id="left"
+                            md-disable-backdrop md-whiteframe="4">
+
+                    <md-toolbar class="md-theme-indigo">
+                        <h1 class="md-toolbar-tools" style="background: #4CAF50">修改器</h1>
+                    </md-toolbar>
+
+                    <md-content layout-margin>
+                        <p>
+                            This sidenav is not showing any backdrop, where users can click on it, to close the sidenav.
+                        </p>
+                        <table border="1" width="700px">
+                            <tr class="th">
+                                <td><md-input-container >
+                                    <label>请输入用户名</label>
+                                    <input  ng-model="name">
+                                </md-input-container></td>
+
+                            </tr>
+                            <tr class="td">
+                                <td><button ng-click="ctrl.Feed(name)" class="button1-1 button-1">填满饥饿度</button></td>
+
+                            </tr>
+                            <tr class="td"><td>
+                                <button ng-click="ctrl.HP(name)" class="button1-1 button-1">填满生命值</button>
+                            </td></tr>
+                            <tr class="td">
+                                <td><button ng-click="ctrl.Fly(name)" class="button1-1 button-1">飞行模式</button></td>
+
+                            </tr>
+                            <tr>
+                                <td><button ng-click="ctrl.God(name)" class="button1-1 button-1">上帝模式</button></td>
+
+                            </tr>
+                            <tr>
+                                <td><button ng-click="ctrl.Exp(name,exp)" class="button1-1 button-1">调整用户经验</button></button><input type="text" ng-model="exp" placeholder="请输入整数"></td>
+
+                            </tr>
+                            <tr>
+                                <td><button ng-click="ctrl.Op(name,ctrl.currentUserDetail.op)" class="button-1 button1-1">是否设置成管理</button>: {{ctrl.currentUserDetail.op}}<input type="checkbox" ng-model="ctrl.currentUserDetail.op"></td>
+
+                            </tr>
+                            <tr>
+                                <td><button  ng-click="ctrl.Mod(name,ctrl.currentUserDetail.gamemode)" class="button-1 button1-1">更改游戏模式</button>
+                                    <select ng-model="ctrl.currentUserDetail.gamemode">
+                                        <option>creative</option>
+                                        <option>survival</option>
+                                    </select>
+                                </td>
+
+                            </tr>
+                        </table>
+                        <md-button ng-click="toggleLeft()" class="md-accent">
+                            完成
+                        </md-button>
+                    </md-content>
+                </md-sidenav>
+            </section>
+<div>
+        </div>
+        </div>
     <div align="center">
         </div>
     <a name="D"></a>
@@ -267,35 +335,51 @@
         setInterval("lblTime.innerText=new Date().toLocaleString()", 1000)
     </script>
 </div>
+<div class="inset" ng-controller="SwitchDemoCtrl" ng-cloak>
+
+    <div class="lock-size" layout="row" layout-align="row right" ng-controller="DemoCtrl as demo">
+        <md-fab-speed-dial md-open="demo.isOpen" md-direction="{{demo.selectedDirection}}"
+                           ng-class="demo.selectedMode">
+            <md-fab-trigger>
+                <md-button aria-label="menu" class="md-fab md-warn" style="background: goldenrod">
+                    <md-icon md-svg-src="img/icons/menu.svg"></md-icon>
+                </md-button>
+            </md-fab-trigger>
+
+            <md-fab-actions>
+                    <md-button aria-label="Twitter" class="md-fab md-raised md-mini">
+                    <md-icon md-svg-src="img/icons/twitter.svg" aria-label="Twitter"></md-icon>
+                </md-button>
+                <md-button aria-label="Facebook" class="md-fab md-raised md-mini">
+                    <md-icon md-svg-src="img/icons/facebook.svg" aria-label="Facebook"></md-icon>
+                </md-button>
+                <md-button aria-label="Google Hangout" class="md-fab md-raised md-mini">
+                    <md-icon md-svg-src="img/icons/hangout.svg" aria-label="Google Hangout"></md-icon>
+                </md-button>
+            </md-fab-actions>
+        </md-fab-speed-dial>
+    </div>
 
 
 <label class="house-label" for="range" id="label">Rooms</label>
-<input type="range" min="3" max="6" step="1" value="6" id="range">
+<input type="range" min="0" max="99" step="1" value="6" id="range">
 <script src='https://unpkg.com/flipping@0.5.3/dist/flipping.animationFrame.js'></script>
 
 </div>
-
-<script>
-
-
-</script>
-
 <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular.js"></script>
-<script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-animate.js"></script>
-<script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-material.js"></script>
-<script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-resource.min.js"></script>
+    <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-resource.min.js"></script>
+    <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-animate.js"></script>
+    <script src="https://cdn.bootcss.com/angular-material/1.1.4/angular-material.js"></script>
     <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular-route.min.js"></script>
     <script src='https://cdn.bootcss.com/angular.js/1.6.4/angular-aria.min.js'></script>
     <script src='https://cdn.bootcss.com/angular.js/1.6.4/angular-messages.min.js'></script>
-    <script src='https://cdn.rawgit.com/angular/bower-material/v0.9.7-master-814431f/angular-material.js'></script>
     <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/assets-cache.js'></script>
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.5.1/restangular.js"></script>
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.5.1/restangular.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.5.1/restangular.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.5.1/restangular.min.js"></script>
     <script type="text/javascript" src="highcharts-ng.js"></script>
     <script type="text/javascript" src="lib/Highcharts-5.0.12/code/highcharts.js"></script>
     <script src="index.js"></script>
-    <script src="script.js"></script>
-    <script src="tm.pagination.js"></script>
+
 </body>
 
 </html>

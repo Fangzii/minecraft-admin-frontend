@@ -187,3 +187,25 @@ background-image: url("https://media.mojang.com/blog-image/2c34ca1217c7d95e76a6f
     width: 1024px;
     height: 436px;
 }
+
+
+.switchdemoBasicUsage .inset {
+    padding-left: 25px;
+    padding-top: 25px; }
+
+.fabSpeedDialdemoBasicUsage .text-capitalize {
+    text-transform: capitalize; }
+
+.fabSpeedDialdemoBasicUsage .md-fab:hover, .fabSpeedDialdemoBasicUsage .md-fab.md-focused {
+    background-color: #000 !important; }
+
+.fabSpeedDialdemoBasicUsage p.note {
+    font-size: 1.2rem; }
+
+.fabSpeedDialdemoBasicUsage .lock-size {
+    min-width: 300px;
+    min-height: 300px;
+    width: 300px;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto; }
