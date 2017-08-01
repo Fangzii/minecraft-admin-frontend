@@ -12,18 +12,31 @@
     <div style="margin:0 auto;width:1000px;height:20px;overflow:hidden;">
     </div>
     <h1><u>Minecraft</u></h1>
-    <div class="head-picture">
-        <div class="head-ctrl-box" align="center">
-            <p class="head-ctrl">
-                <a class="ctrl" href="#1"></a>
-                <a class="ctrl" href="#2"></a>
-                <a class="ctrl" href="#3"></a>
-                <a class="ctrl" href="#4"></a>
-            </p>
-        </div>
+    <div ng-cloak layout-align="center center">
+        <md-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="one">
+                    <md-content class="md-padding">
+                        <img src="1.png">
+                    </md-content>
+                </md-tab>
+                <md-tab label="two">
+                    <md-content class="md-padding">
+                        <h1 class="md-display-2">Tab Two</h1>
+                    </md-content>
+                </md-tab>
+                <md-tab label="three">
+                    <md-content class="md-padding">
+                        <h1 class="md-display-2">Tab Three</h1>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </md-content>
+    </div>
+
     </div>
     <p> </p>
-    <div ng-controller="MinecraftController as ctrl" class="titel">
+    <div ng-controller="MinecraftController as ctrl" class="titel" align="center">
         <div>
             <button ng-click="toggleLeft()" class="button button1">作弊器</button>
             <button href="" ng-click="ctrl.loadCommands(0,20)" ng-mouseenter="openedcommend=openedcommend+1" ng-init="openedcommend=0" class="button button1">读取命令</button>
