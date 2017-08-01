@@ -1,16 +1,20 @@
 angular.module('minecraft', ['ngMaterial'])
-    .controller('MinecraftController', function ($scope,$http, $timeout, $mdSidenav,$mdDialog) {
+    .controller('MinecraftController', function ($scope,$http, $timeout, $mdSidenav,$mdDialog,$log) {
         var self = this;
+        $scope.toggleLeft2 = buildDelayedToggler('left');
+        $scope.toggleRight2 = buildToggler('right');
+        $scope.isOpenRight = function(){
+            return $mdSidenav('right').isOpen();
+        };
         $scope.toggleLeft = buildToggler('left');
         $scope.toggleRight = buildToggler('right');
-
         $scope.openDialog = function(ev) {
             $mdDialog.show(
                 $mdDialog.alert()
                     .parent(angular.element(document.querySelector('#popupContainer')))
-                    .clickOutsideToClose(true)
+                    .clickOutsideToClose(false)
                     .title('功能未完成')
-                    .textContent('')
+                    .textContent('<input type="text" ng-model="">')
                     .ariaLabel('Alert Dialog Demo')
                     .ok('确定')
                     .targetEvent(ev)
@@ -22,6 +26,44 @@ angular.module('minecraft', ['ngMaterial'])
                 $mdSidenav(componentId).toggle();
             };
         }
+
+        function debounce(func, wait, context) {
+            var timer;
+
+            return function debounced() {
+                var context = $scope,
+                    args = Array.prototype.slice.call(arguments);
+                $timeout.cancel(timer);
+                timer = $timeout(function() {
+                    timer = undefined;
+                    func.apply(context, args);
+                }, wait || 10);
+            };
+        }
+        function buildDelayedToggler(navID) {
+            return debounce(function() {
+                // Component lookup should always be available since we are not using `ng-if`
+                $mdSidenav(navID)
+                    .toggle()
+                    .then(function () {
+                        $log.debug("toggle " + navID + " is done");
+                    });
+            }, 200);
+        }
+
+        function buildToggler(navID) {
+            return function() {
+                // Component lookup should always be available since we are not using `ng-if`
+                $mdSidenav(navID)
+                    .toggle()
+                    .then(function () {
+                        $log.debug("toggle " + navID + " is done");
+                    });
+            };
+        }
+
+
+
 
         $scope.pages = ["1", "2", "3", "4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"];
         $scope.searchText = '';
@@ -296,3 +338,22 @@ angular.module('minecraft', ['ngMaterial'])
         this.selectedDirection = 'left';
     })
 
+    .controller('LeftCtrl', function ($scope, $timeout, $mdSidenav, $log) {
+        $scope.close = function () {
+            // Component lookup should always be available since we are not using `ng-if`
+            $mdSidenav('left').close()
+                .then(function () {
+                    $log.debug("close LEFT is done");
+                });
+
+        };
+    })
+    .controller('RightCtrl', function ($scope, $timeout, $mdSidenav, $log) {
+        $scope.close = function () {
+            // Component lookup should always be available since we are not using `ng-if`
+            $mdSidenav('right').close()
+                .then(function () {
+                    $log.debug("close RIGHT is done");
+                });
+        };
+    });
