@@ -7,41 +7,48 @@
     <link href="https://cdn.bootcss.com/angular-material/1.1.4/angular-material.css" rel="stylesheet">
     <meta charset="utf-8" />
 </head>
-<div align="center">
+<div align="center" ng-controller="MinecraftController">
     <a name="T"></a>
     <div style="margin:0 auto;width:1000px;height:20px;overflow:hidden;">
-    </div>
+    </div><md-toolbar class="fixed-header" style="background-color: transparent">
     <h1><u>Minecraft</u></h1>
+</md-toolbar>
+    <p></p>
     <div ng-cloak layout-align="center center">
         <md-content>
             <md-tabs md-dynamic-height md-border-bottom>
-                <md-tab label="one">
-                    <md-content class="md-padding">
-                        <img src="1.png">
+                <md-tab label="one" class="md-padding">
+                    <md-content>
+                        <a href="" ng-click="showAdvanced($event)"> <img src="1.png"></a>
                     </md-content>
                 </md-tab>
                 <md-tab label="two">
                     <md-content class="md-padding">
-                        <h1 class="md-display-2">Tab Two</h1>
+                        <img src="1.jpg">
                     </md-content>
                 </md-tab>
                 <md-tab label="three">
                     <md-content class="md-padding">
-                        <h1 class="md-display-2">Tab Three</h1>
+                        <img src="2.png">
+
                     </md-content>
                 </md-tab>
             </md-tabs>
         </md-content>
+
     </div>
 
     </div>
     <p> </p>
     <div ng-controller="MinecraftController as ctrl" class="titel" align="center">
         <div>
-            <button ng-click="toggleLeft()" class="button button1">作弊器</button>
-            <button href="" ng-click="ctrl.loadCommands(0,20)" ng-mouseenter="openedcommend=openedcommend+1" ng-init="openedcommend=0" class="button button1">读取命令</button>
-            <button href="" ng-click="ctrl.loadUsers()" ng-mouseenter="openeduser=openeduser+1" ng-init="openeduser=0" class="button button1">读取用户</button>
-            <button ng-click="toggleRight()" ng-init="openedcommendChange2=0" class="button button1">搜索</button>
+            <button ng-click="toggleLeft()" class="button button1"><md-tooltip
+                    md-direction="{{demo.tipDirection}}">
+                小心使用
+            </md-tooltip>作弊器</button>
+            <button href="" ng-click="ctrl.loadCommands(0,20)" ng-mouseenter="openedcommend=openedcommend+1" ng-init="openedcommend=0" class="button button1">读取命令<md-tooltip md-direction="{{demo.tipDirection}}">读取命令</md-tooltip></button>
+            <button href="" ng-click="ctrl.loadUsers()" ng-mouseenter="openeduser=openeduser+1" ng-init="openeduser=0" class="button button1">读取用户<md-tooltip md-direction="{{demo.tipDirection}}">读取用户</md-tooltip></button>
+            <button ng-click="toggleRight()" ng-init="openedcommendChange2=0" class="button button1">搜索<md-tooltip md-direction="{{demo.tipDirection}}">功能未完成</md-tooltip></button>
             <div ng-if="openedcommendChange" class="playground">
                 <table border="1">
                     <tr class="th">
@@ -148,7 +155,10 @@
                 <span>当前第 {{page*count/count}} 页</span>
                 <button ng-click="ctrl.loadCommands(page*count-count,count)" class="button-1 button1-1">go</button>
                 <button ng-click="ctrl.loadCommands(0,count)" class="button-1 button1-1">首页</button>
-                <button ng-click="ctrl.loadCommands(page*count,count)" class="button-1 button1-1">下一页</button>
+                <button ng-click="ctrl.loadCommands(page*count,count)" class="button-1 button1-1"><md-tooltip
+                        md-direction="{{demo.tipDirection}}">
+                    当前页码的下一页
+                </md-tooltip>下一页</button>
             </div>
             <p></p>
             <div ng-if="openeduser">
@@ -158,7 +168,7 @@
                         <td>世界类型</td>
                     </tr>
                     <tr ng-repeat="user in ctrl.users.results" class="td">
-                        <td><a href="" ng-click="ctrl.loadUserDetail(user.name)" >{{user.name}}</a></td>
+                        <td><a href="" ng-click="ctrl.loadUserDetail(user.name)" >{{user.name}}<md-tooltip>下方打勾打开用户详情</md-tooltip></a></td>
                         <td>{{user.world}}</td>
                     </tr>
                     <tr>

@@ -1,6 +1,8 @@
 angular.module('minecraft', ['ngMaterial'])
-    .controller('MinecraftController', function ($scope,$http, $timeout, $mdSidenav,$mdDialog,$log) {
+    .controller('MinecraftController', function ($scope,$http, $timeout, $mdSidenav,$mdDialog,$log,$interval) {
         var self = this;
+        $scope.status = '';
+        $scope.items = [1,2,3,4,5];
         $scope.toggleLeft2 = buildDelayedToggler('left');
         $scope.toggleRight2 = buildToggler('right');
         $scope.isOpenRight = function(){
@@ -20,8 +22,43 @@ angular.module('minecraft', ['ngMaterial'])
                     .targetEvent(ev)
             )
         }
+            $scope.showAdvanced = function(event) {
+                $mdDialog.show({
+                    clickOutsideToClose: true,
+                    scope: $scope,
+                    preserveScope: true,
+                    templateUrl: 'head2.html',
+                    controller: function DialogController($scope, $mdDialog) {
+                        $scope.closeDialog = function() {
+                            $mdDialog.hide() ;
+                        }
+                    }
+                })
+            }
 
-        function buildToggler(componentId) {
+        function DialogController($scope, $mdDialog) {
+            $scope.hide = function() {
+                $mdDialog.hide();
+            };
+
+            $scope.cancel = function() {
+                $mdDialog.cancel();
+            };
+
+            $scope.answer = function(answer) {
+                $mdDialog.hide(answer);
+            };
+        }
+
+
+        function AppCtrl($scope) {
+            $scope.demo = {
+                showTooltip: false,
+                tipDirection: 'bottom'
+            }
+        }
+
+            function buildToggler(componentId) {
             return function() {
                 $mdSidenav(componentId).toggle();
             };

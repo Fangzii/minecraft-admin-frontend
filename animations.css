@@ -182,11 +182,7 @@ tr:nth-child(even){background-color: #f2f2f2}
     padding-top: 375px;
     padding-right: 460px;
 }
-.head-picture{
-background-image: url("https://media.mojang.com/blog-image/2c34ca1217c7d95e76a6f8d646adf9208f78145a/blogmcnet.png");
-    width: 1024px;
-    height: 436px;
-}
+
 
 
 .switchdemoBasicUsage .inset {
@@ -209,3 +205,4 @@ background-image: url("https://media.mojang.com/blog-image/2c34ca1217c7d95e76a6f
     height: 300px;
     margin-left: auto;
     margin-right: auto; }
+
