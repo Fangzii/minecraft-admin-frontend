@@ -1,6 +1,11 @@
 angular.module('minecraft', ['ngMaterial'])
     .controller('MinecraftController', function ($scope,$http, $timeout, $mdSidenav,$mdDialog,$log,$interval) {
         var self = this;
+        $scope.head={
+            isOpen:false,
+            count: 0,
+            selectedDirection: 'left'
+        }
         $scope.status = '';
         $scope.items = [1,2,3,4,5];
         $scope.toggleLeft2 = buildDelayedToggler('left');

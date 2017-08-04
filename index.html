@@ -7,19 +7,48 @@
     <link href="https://cdn.bootcss.com/angular-material/1.1.4/angular-material.css" rel="stylesheet">
     <meta charset="utf-8" />
 </head>
+<div ng-controller="MinecraftController" class="fixed-header">
+    <md-fab-toolbar md-open="head.isOpen" count="head.count"
+                      md-direction="left" >
+    <md-fab-trigger class="align-with-text">
+        <md-button aria-label="menu" class="md-fab md-primary" style="background-color: green">
+            <md-tooltip md-direction="{{head.selectedDirection}}">
+                菜单
+            </md-tooltip>
+            <md-icon md-svg-src="menu.svg"></md-icon>
+        </md-button>
+    </md-fab-trigger>
+    <md-toolbar>
+        <h2 style="color: inherit">Minecarft</h2>
+    </md-toolbar>
+</md-fab-toolbar>
+</div>
+<div>
+    <md-button>
+    </md-button>
+</div>
+<div class="fixed-down">
+    <a href="#T"><md-button aria-label="back top" class="md-fab md-primary " style="background-color: red">
+        <md-tooltip md-direction="top">
+            Back to top
+        </md-tooltip>
+        <md-icon md-svg-src="menu.svg"></md-icon>
+    </md-button></a>
+</div>
+
 <div align="center" ng-controller="MinecraftController">
     <a name="T"></a>
     <div style="margin:0 auto;width:1000px;height:20px;overflow:hidden;">
-    </div><md-toolbar class="fixed-header" style="background-color: transparent">
+    </div><md-toolbar  style="background-color: transparent">
     <h1><u>Minecraft</u></h1>
 </md-toolbar>
     <p></p>
     <div ng-cloak layout-align="center center">
         <md-content>
             <md-tabs md-dynamic-height md-border-bottom>
-                <md-tab label="one" class="md-padding">
+                <md-tab label="PC" class="md-padding">
                     <md-content>
-                        <a href="" ng-click="showAdvanced($event)"> <img src="1.png"></a>
+                        <a href="" ng-click="showAdvanced($event)"> <img src="1.png"><md-tooltip>单机了解游戏详情</md-tooltip></a>
                     </md-content>
                 </md-tab>
                 <md-tab label="two">
@@ -27,9 +56,9 @@
                         <img src="1.jpg">
                     </md-content>
                 </md-tab>
-                <md-tab label="three">
+                <md-tab label="Phone">
                     <md-content class="md-padding">
-                        <img src="2.png">
+                        <a href="" ng-click="showAdvanced($event)"> <img src="2.png"><md-tooltip>单机了解游戏详情</md-tooltip></a>
 
                     </md-content>
                 </md-tab>
@@ -45,9 +74,9 @@
             <button ng-click="toggleLeft()" class="button button1"><md-tooltip
                     md-direction="{{demo.tipDirection}}">
                 小心使用
-            </md-tooltip>作弊器</button>
-            <button href="" ng-click="ctrl.loadCommands(0,20)" ng-mouseenter="openedcommend=openedcommend+1" ng-init="openedcommend=0" class="button button1">读取命令<md-tooltip md-direction="{{demo.tipDirection}}">读取命令</md-tooltip></button>
-            <button href="" ng-click="ctrl.loadUsers()" ng-mouseenter="openeduser=openeduser+1" ng-init="openeduser=0" class="button button1">读取用户<md-tooltip md-direction="{{demo.tipDirection}}">读取用户</md-tooltip></button>
+            </md-tooltip>作弊</button>
+            <button href="" ng-click="ctrl.loadCommands(0,20)" ng-mouseenter="openedcommend=openedcommend+1" ng-init="openedcommend=0" class="button button1">命令<md-tooltip md-direction="{{demo.tipDirection}}">读取命令</md-tooltip></button>
+            <button href="" ng-click="ctrl.loadUsers()" ng-mouseenter="openeduser=openeduser+1" ng-init="openeduser=0" class="button button1">用户<md-tooltip md-direction="{{demo.tipDirection}}">读取用户</md-tooltip></button>
             <button ng-click="toggleRight()" ng-init="openedcommendChange2=0" class="button button1">搜索<md-tooltip md-direction="{{demo.tipDirection}}">功能未完成</md-tooltip></button>
             <div ng-if="openedcommendChange" class="playground">
                 <table border="1">
@@ -130,7 +159,7 @@
                             <option >20</option>
                             </select>
                             条／总共{{ctrl.Commanddata.total}}条</span> 跳到
-                <select ng-model="page">w
+                <select ng-model="page">
                            <option>1</option>
                            <option>2</option>
                            <option>3</option>
@@ -168,7 +197,7 @@
                         <td>世界类型</td>
                     </tr>
                     <tr ng-repeat="user in ctrl.users.results" class="td">
-                        <td><a href="" ng-click="ctrl.loadUserDetail(user.name)" >{{user.name}}<md-tooltip>下方打勾打开用户详情</md-tooltip></a></td>
+                        <td><a href="" ng-click="ctrl.loadUserDetail(user.name)" ng-model="name1">{{user.name}}<md-tooltip>下方打勾打开用户详情</md-tooltip></a></td>
                         <td>{{user.world}}</td>
                     </tr>
                     <tr>
@@ -416,6 +445,8 @@
                 </md-button>
             </md-fab-actions>
         </md-fab-speed-dial>
+
+
     </div>
     <label class="house-label" for="range" id="label">Rooms</label>
 <input type="range" min="0" max="99" step="1" value="6" id="range">
